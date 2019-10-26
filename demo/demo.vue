@@ -1,11 +1,7 @@
 <template>
-  <div id="demo" style="text-align: center;padding-top: 100px;">
+  <div id="demo" style="padding-top: 100px;margin-left: 300px;">
     <VueQuarterSelect
       v-model="date"
-      min-year="2017"
-      max-year="2022"
-      size="medium"
-      style="width: 200px;"
     />
   </div>
 </template>

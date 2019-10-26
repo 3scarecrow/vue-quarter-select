@@ -1,48 +1,36 @@
-# vue-quarter-select
+---
+sidebar: auto
+---
 
-A basic Vue.js selector that can select quarter
+<!-- markdownlint-disable MD033 -->
+<style>
+  .db__wrapper { margin-top: 16px !important; }
+  .sw__wrapper { margin-top: 16px !important; }
+</style>
 
-![vue-quarter-select preview](preview.png)
+# Vue quarter select
 
-## Install
+一个基于 Vue.js 的季度选择器
 
-```sh
-# yarn
-yarn add @3scarecrow/vue-quarter-select
-```
+## Example
 
-```sh
-#npm
-npm install --save @3scarecorw/vue-quarter-select
-```
+<!-- <demo-box> -->
 
-## Documentation
+<!-- 绑定v-model -->
 
-[中文](https://3scarecorw.github.io/vue-quarter-select/)
+<example/>
 
-## Usage
+<<< docs/.vuepress/components/example.vue{2}
 
-```vue
-<template>
-  <VueQuarterSelect
-    v-model="date"
-  />
-</template>
-<script>
-import VueQuarterSelect from '@3scarecrow/vue-quarter-select'
-export default {
-  // ...
-  components: {
-    VueQuarterSelect
-  },
-  data() {
-    return {
-      date: ''
-    }
-  }
-}
-</script>
-```
+<!-- <example slot="demo"/> -->
+
+<!-- <div slot="code">
+
+<<< docs/.vuepress/components/example.vue{2}
+
+</div>
+
+</demo-box> -->
 
 ## Props
 

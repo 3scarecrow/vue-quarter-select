@@ -25,11 +25,13 @@
 .icon-prev {
   float: left;
   background-image: url(./assets/prev.png);
+  background-repeat: no-repeat;
 }
 
 .icon-next {
   float: right;
   background-image: url(./assets/next.png);
+  background-repeat: no-repeat;
 }
 
 .quarter__header-label {

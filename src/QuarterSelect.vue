@@ -2,26 +2,22 @@
   <VueSelectWrapper
     v-model="displayValue"
     :placeholder="placeholder"
-    :disabled="disabled"
-    :size="size"
     :clearable="clearable"
-    :dropdown-width="dropdownWidth"
-    :dropdown-z-index="dropdownZIndex"
-    :popper-class="popperClass"
+    v-bind="$attrs"
     @clear="clear"
   >
     <div class="quarter">
       <div class="quarter__header">
         <button
           class="iconfont icon-prev"
-          :class="{ quarter__button_disabled: year <= minYear }"
-          @click="year > minYear && year--"
+          :class="{ quarter__button_disabled: false }"
+          @click="year--"
         ></button>
         <span class="quarter__header-label">{{ year }}年</span>
         <button
           class="iconfont icon-next"
-          :class="{ quarter__button_disabled: year >= maxYear }"
-          @click="year < maxYear && year++"
+          :class="{ quarter__button_disabled: false }"
+          @click="year++"
         ></button>
       </div>
       <ul class="quarter__list">
@@ -83,34 +79,9 @@ export default {
       type: String,
       default: '请选择季度'
     },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    size: {
-      type: String,
-      default: ''
-    },
     clearable: {
       type: Boolean,
       default: true
-    },
-    dropdownWidth: {
-      type: [String, Number]
-    },
-    dropdownZIndex: {
-      type: Number,
-      default: 1000
-    },
-    popperClass: {
-      type: String,
-      default: ''
-    },
-    minYear: {
-      type: [String, Number]
-    },
-    maxYear: {
-      type: [String, Number]
     }
   },
 

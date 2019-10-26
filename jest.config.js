@@ -35,5 +35,9 @@ module.exports = {
     'jest-watch-typeahead/testname'
   ],
 
-  preset: '@vue/cli-plugin-unit-jest'
+  preset: '@vue/cli-plugin-unit-jest',
+
+  // collectCoverage: true,
+  // collectCoverageFrom: ["**/*.{js,vue}", "!**/node_modules/**"],
+  // coverageReporters: ['html', 'text-summary']
 }

@@ -1,11 +1,18 @@
 {
-  "name": "vue-quarter-select",
+  "name": "@3scarecrow/vue-quarter-select",
   "version": "0.1.0",
-  "private": true,
+  "description": "A basic Vue.js selector that can select quarter",
+  "author": "3scarecrow",
+  "main": "dist/vue-quarter-select.umd.min.js",
+  "module": "dist/vue-quarter-select.esm.js",
+  "files": ["dist"],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "build:lib": "rollup -c",
+    "docs:serve": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
@@ -14,14 +21,29 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@laomao800/vue-demo-box": "^1.1.5",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
     "@vue/cli-plugin-unit-jest": "^4.0.5",
     "@vue/cli-service": "^4.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
+    "autoprefixer": "^9.6.5",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "postcss-url": "^8.0.0",
+    "rollup": "^1.25.2",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-uglify": "^6.0.3",
+    "rollup-plugin-vue": "^5.0.1",
+    "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.2.0"
+  },
+  "license": "MIT",
+  "keywords": ["vue", "quarter", "select"],
+  "publishConfig": {
+    "access": "public"
   }
 }

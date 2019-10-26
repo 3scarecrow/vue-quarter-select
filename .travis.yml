@@ -1,0 +1,20 @@
+language: node_js
+
+node_js: 
+  - node_js
+
+script: 
+  - npm run test
+
+deploy: 
+  - provider: pages
+  local-dir: docs/.vuepress/dist
+  skip-clearup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
+  - provider: npm
+  api_key: $NPM_TOKEN
+  on:
+    tags: true
+    repo: 3scarecrow/vue-quarter-select
