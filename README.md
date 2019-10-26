@@ -1,6 +1,6 @@
 # vue-quarter-select
 
-A basic Vue.js selector that can select quarter
+A basic Vue.js selector that can select quarter.
 
 ![vue-quarter-select preview](preview.png)
 
