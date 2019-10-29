@@ -4,8 +4,7 @@ sidebar: auto
 
 <!-- markdownlint-disable MD033 -->
 <style>
-  .db__wrapper { margin-top: 16px !important; }
-  .sw__wrapper { margin-top: 16px !important; }
+  .sw__wrapper { width: 350px; margin-top: 16px !important; }
 </style>
 
 # Vue quarter select
@@ -14,30 +13,41 @@ sidebar: auto
 
 ## Example
 
-<!-- <demo-box> -->
+<box-wrapper title="基本使用">
 
-<!-- 绑定v-model -->
+<demo-default/>
 
-<example/>
+<div slot="code">
 
-<<< docs/.vuepress/components/example.vue{2}
-
-<!-- <example slot="demo"/> -->
-
-<!-- <div slot="code">
-
-<<< docs/.vuepress/components/example.vue{2}
+<<< docs/.vuepress/components/demo/default.vue
 
 </div>
 
-</demo-box> -->
+</box-wrapper>
+
+<box-wrapper title="使用value-format">
+
+<demo-value-format/>
+
+<div slot="code">
+
+<<< docs/.vuepress/components/demo/value-format.vue
+
+</div>
+
+</box-wrapper>
 
 ## Props
 
 | prop | type | default | description |
 | --- | --- | --- | --- |
-| value/v-model | any | `undefined` | 绑定值 |
+| value/v-model | string/array | `[]` | 绑定值 |
+| value-format | string | `yyyy-MM-dd` | 绑定值的格式 |
 | placeholder | string | `''` | placeholder |
+| minDate | string/date | `undefined` | 小于最小日期的季度将禁用 |
+| maxDate | string/date | `undefined` | 大于最大日期的季度将禁用 |
+| custom-value | function(year,quarter,date) | - | 自定义选择后输入框显示的值 |
+| custom-select-items | function | - | 自定义下拉选项文本 |
 | dropdown-width | number/string | `undefined` | 下拉弹出元素宽度，若不设置则与触发元素相同宽度。 |
 | dropdown-z-index | number | `1000` | 下拉弹出元素的 z-index 值 |
 | disabled | boolean | `false` | 是否禁用 |

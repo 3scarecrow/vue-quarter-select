@@ -69,3 +69,8 @@
 .quarter__item:hover {
   background-color: #f5f7fa;
 }
+
+.quarter__item_disabled {
+  color: #c0c4cc;
+  cursor: not-allowed;
+}

@@ -1,6 +1,6 @@
 module.exports = {
 	title: 'Vue quarter select',
-	base: '/vue-select-wrapper/',
+	base: '/vue-quarter-select/',
 	locales: {
 		'/': {
 			lang: 'zh-CN'

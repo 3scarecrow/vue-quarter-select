@@ -46,6 +46,7 @@ export default[
       format: 'umd',
       file: 'dist/vue-quarter-select.umd.js',
       name: 'vue-quarter-select',
+      exports: 'named',
       banner
     }
   },
@@ -55,6 +56,7 @@ export default[
       format: 'umd',
       file: 'dist/vue-quarter-select.umd.min.js',
       name: 'vue-quarter-select',
+      exports: 'named',
       banner
     },
     plugins: [

@@ -1,5 +1,5 @@
 /**
- * 日期格式化
+ * 日期格式化 日期 -> 字符串
  * @param dateOrDatestr
  * @param fmt 'yyyy-MM-dd hh:mm:ss'
  * @returns {*}
@@ -14,6 +14,9 @@ export function formatDate(dateOrDatestr, fmt = 'yyyy-MM-dd') {
     date = strToDate(dateOrDatestr)
   } else {
     date = dateOrDatestr
+  }
+  if (fmt === 'timestamp') {
+    return date.getTime()
   }
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(
@@ -180,4 +183,17 @@ export function getNearTime({
       }
     }
   }
+}
+
+export function getYear(date) {
+  return typeof date === 'string'
+    ? autoParseDate(date).getFullYear()
+    : date.getFullYear()
+}
+
+export function getQuarter(date) {
+  const _date = typeof date === 'string'
+    ? autoParseDate(date)
+    : date
+  return (parseInt((_date.getMonth() + 1) / 3, 10) + 1  )
 }

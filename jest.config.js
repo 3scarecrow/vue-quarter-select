@@ -13,7 +13,10 @@ module.exports = {
   },
 
   transformIgnorePatterns: [
-    '/node_modules/'
+    '/node_modules/',
+    '/docs/',
+    '/dist/',
+    '/demo/'
   ],
 
   moduleNameMapper: {

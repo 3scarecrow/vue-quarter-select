@@ -1,0 +1,35 @@
+
+.dw__content {
+  border: 1px solid #ebebeb;
+  border-radius: 3px;
+  transition: 0.2s;
+  padding: 20px 20px 0 20px;
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+.dw__content:hover {
+  box-shadow: 0 0 8px 0 rgba(232, 237, 250, .6),
+  0 2px 4px 0 rgba(232, 237, 250, .5)
+}
+.dw__component {
+  margin-bottom: 20px;
+}
+.dw__button {
+  height: 44px;
+  line-height: 44px;
+  border-top: 1px solid #ebebeb;
+  text-align: center;
+}
+.dw__button_code {
+  margin: 0 auto;
+  width: 50px;
+  height: 44px;
+  background: url('./code.png') center no-repeat;
+  opacity: .7;
+  transition: transform .2s, opacity .2s;
+  cursor: pointer;
+}
+.dw__button_code:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}

@@ -1,8 +1,6 @@
 <template>
-  <div id="demo" style="padding-top: 100px;margin-left: 300px;">
-    <VueQuarterSelect
-      v-model="date"
-    />
+  <div id="demo" style="padding-top: 100px;margin: 0 auto;">
+    <VueQuarterSelect v-model="date" />
   </div>
 </template>
 <script>
@@ -12,7 +10,7 @@ export default {
   name: 'App',
   components: {
     VueQuarterSelect,
-    VueSelectWrapper,
+    VueSelectWrapper
   },
   data() {
     return {
