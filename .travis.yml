@@ -6,9 +6,6 @@ node_js:
 script:
   - npm run test:unit
 
-env:
-  - github-token: $GITHUB_TOKEN
-
 deploy:
   - provider: pages
     local-dir: docs/.vuepress/dist
