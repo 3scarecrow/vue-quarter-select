@@ -1,5 +1,7 @@
 # vue-quarter-select
 
+![build](<https://api.travis-ci.org/3scarecrow/vue-quarter-select.svg?branch=master>)
+
 A basic Vue.js selector that can select quarter.
 
 ![vue-quarter-select preview](preview.png)
@@ -18,7 +20,7 @@ npm install --save @3scarecorw/vue-quarter-select
 
 ## Documentation
 
-[中文](https://3scarecorw.github.io/vue-quarter-select/)
+[中文](https://3scarecrow.github.io/vue-quarter-select/)
 
 ## Usage
 

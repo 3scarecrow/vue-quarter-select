@@ -4,6 +4,10 @@
       <h3>{{title}}</h3>
     </div>
     <div class="dw__content">
+      <div class="dw__des">
+        <h4 v-if="$slots.des">说明:</h4>
+        <slot name="des"></slot>
+      </div>
       <div class="dw__component">
         <slot></slot>
       </div>
@@ -22,16 +26,11 @@
 <script>
 export default {
   name: 'wrapper',
-  props: {
-    title: ''
-  },
+  props: ['title'],
   data() {
     return {
       isShow: false
     }
-  },
-  methods: {
-    showCode() {}
   }
 }
 </script>
