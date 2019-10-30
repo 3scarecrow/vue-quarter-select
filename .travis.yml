@@ -11,10 +11,12 @@ deploy:
     local-dir: docs/.vuepress/dist
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
-  on:
-    branch: master
+    email: 1648314523@qq.com
+    on:
+      branch: master
   - provider: npm
     api_key: $NPM_TOKEN
-  on:
-    tags: true
-    repo: 3scarecrow/vue-quarter-select
+    email: 1648314523@qq.com
+    on:
+      tags: true
+      repo: 3scarecrow/vue-quarter-select

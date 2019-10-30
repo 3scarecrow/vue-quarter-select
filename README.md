@@ -48,8 +48,13 @@ export default {
 
 | prop | type | default | description |
 | --- | --- | --- | --- |
-| value/v-model | any | `undefined` | 绑定值 |
+| value/v-model | string/array | `[]` | 绑定值 |
+| value-format | string | `yyyy-MM-dd` | 绑定值的格式 |
 | placeholder | string | `''` | placeholder |
+| minDate | string/date | `undefined` | 小于最小日期的季度将禁用 |
+| maxDate | string/date | `undefined` | 大于最大日期的季度将禁用 |
+| custom-value | function(year,quarter,date) | - | 自定义选择后输入框显示的值 |
+| custom-select-items | function | - | 自定义下拉选项文本 |
 | dropdown-width | number/string | `undefined` | 下拉弹出元素宽度，若不设置则与触发元素相同宽度。 |
 | dropdown-z-index | number | `1000` | 下拉弹出元素的 z-index 值 |
 | disabled | boolean | `false` | 是否禁用 |
