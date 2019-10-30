@@ -10,7 +10,7 @@ deploy:
   - provider: pages
     local-dir: docs/.vuepress/dist
     skip-cleanup: true
-    github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+    github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
     email: 1648314523@qq.com
     on:
       branch: master
