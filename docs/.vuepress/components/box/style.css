@@ -12,9 +12,11 @@
   0 2px 4px 0 rgba(232, 237, 250, .5)
 }
 .dw__des {
-  margin-bottom: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ebebeb;
 }
 .dw__component {
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 .dw__button {
