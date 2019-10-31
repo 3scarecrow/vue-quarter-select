@@ -1,8 +1,5 @@
 <template>
   <div class="demo-wrapper">
-    <div class="dw__header">
-      <h3>{{title}}</h3>
-    </div>
     <div class="dw__content">
       <div class="dw__des">
         <h4 v-if="$slots.des">说明:</h4>

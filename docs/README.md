@@ -13,7 +13,9 @@ sidebar: auto
 
 ## Example
 
-<box-wrapper title="基本使用">
+### 基本使用
+
+<box-wrapper>
 
 <demo-default/>
 
@@ -25,7 +27,9 @@ sidebar: auto
 
 </box-wrapper>
 
-<box-wrapper title="使用value-format">
+### 格式化输出值
+
+<box-wrapper>
 
 <demo-value-format/>
 
@@ -37,7 +41,9 @@ sidebar: auto
 
 </box-wrapper>
 
-<box-wrapper title="设置min-date和max-date">
+### 禁用选项
+
+<box-wrapper>
 
 <div slot="des">
 设置min-date属性： 小于min-date日期对应的季度将禁用（不可选择）<br/>
@@ -55,7 +61,9 @@ sidebar: auto
 
 </box-wrapper>
 
-<box-wrapper title="custom-value自定义输入框显示的值">
+### 自定义输入框显示值
+
+<box-wrapper>
 
 <div slot="des">
 
@@ -76,7 +84,9 @@ customValue(year, quarter, date)<br/>
 
 </box-wrapper>
 
-<box-wrapper title="custom-select-items自定义下拉选项文本">
+### 自定义下拉选项文本
+
+<box-wrapper>
 
 <demo-custom-select-items/>
 

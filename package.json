@@ -5,7 +5,9 @@
   "author": "3scarecrow",
   "main": "dist/vue-quarter-select.umd.min.js",
   "module": "dist/vue-quarter-select.esm.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -21,6 +23,7 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@3scarecrow/vue-quarter-select": "^0.1.1",
     "@laomao800/vue-demo-box": "^1.1.5",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
@@ -42,7 +45,11 @@
     "vuepress": "^1.2.0"
   },
   "license": "MIT",
-  "keywords": ["vue", "quarter", "select"],
+  "keywords": [
+    "vue",
+    "quarter",
+    "select"
+  ],
   "publishConfig": {
     "access": "public"
   },
