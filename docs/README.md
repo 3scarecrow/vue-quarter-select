@@ -11,9 +11,25 @@ sidebar: auto
 
 一个基于 Vue.js 的季度选择器
 
+<client-only>
+
 ## Example
 
 ### 基本使用
+
+<demo-box title="单选模式">
+
+绑定值可任意。
+
+<demo-default slot="demo" />
+
+<div slot="code">
+
+<<< docs/.vuepress/components/demo/default.vue
+
+</div>
+
+</demo-box>
 
 <box-wrapper>
 
@@ -97,6 +113,8 @@ customValue(year, quarter, date)<br/>
 </div>
 
 </box-wrapper>
+
+</client-only>
 
 ## Props
 
