@@ -3,8 +3,7 @@
     <div>date: {{date}}</div>
     <VueQuarterSelect
       v-model="date"
-      minDate="2019-04-10"
-      :max-date="new Date('2020-01-01')"
+      :format="format"
     ></VueQuarterSelect>
   </div>
 </template>
@@ -13,11 +12,9 @@
 export default {
   data() {
     return {
-      date: []
+      date: '',
+      format: (year, quarter, date) => `${year} ${quarter}季度`
     }
   }
 }
 </script>
-
-<style>
-</style>

@@ -22,7 +22,7 @@
       </div>
       <ul class="quarter__list">
         <li
-          v-for="item in selectItems"
+          v-for="item in formatSelectItems"
           :key="item.value"
           :class="[
             'quarter__item',
@@ -82,18 +82,16 @@ export default {
     maxDate: {
       type: [String, Date]
     },
-    customValue: {
+    format: {
       type: Function,
       // eslint-disable-next-line
       default: function(year, quarter, date) {
         return `${year}年 第${quarter}季度`
       }
     },
-    customSelectItems: {
-      type: Function,
-      default: function() {
-        return ['第一季度', '第二季度', '第三季度', '第四季度']
-      }
+    selectItems: {
+      type: Array,
+      default: () => ['第一季度', '第二季度', '第三季度', '第四季度']
     }
   },
 
@@ -105,12 +103,8 @@ export default {
   },
 
   computed: {
-    selectItems() {
-      const items = this.customSelectItems()
-      if (!Array.isArray(items)) {
-        return error('Function customSelectItems must return a Array')
-      }
-      return items.map((item, index) => ({
+    formatSelectItems() {
+      return this.selectItems.map((item, index) => ({
         key: item,
         value: index + 1
       }))
@@ -169,7 +163,7 @@ export default {
 
     // 转换输入框显示的内容
     transformValue(quarter, date) {
-      this.formatValue = this.customValue(this.year, quarter, date)
+      this.formatValue = this.format(this.year, quarter, date)
     },
 
     setDate(quarter) {

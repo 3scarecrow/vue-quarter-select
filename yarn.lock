@@ -2,15 +2,6 @@
 # yarn lockfile v1
 
 
-"@3scarecrow/vue-quarter-select@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@3scarecrow/vue-quarter-select/-/vue-quarter-select-0.1.1.tgz#e0d739b6a1d38d04e7bb546d292baba06ea46797"
-  integrity sha512-PUkfp6Cot+KzGQeFKEd9cNJnUwWaczcswbKgxenybtoLAwBXe8lKgch+Da0ftjoDhWklTkYXOLqXA1fPGMtHcQ==
-  dependencies:
-    "@laomao800/vue-select-wrapper" "^1.2.0"
-    core-js "^3.1.2"
-    vue "^2.6.10"
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -8653,6 +8644,11 @@ prettier@1.16.3:
   version "1.16.3"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.16.3.tgz#8c62168453badef702f34b45b6ee899574a6a65d"
   integrity sha512-kn/GU6SMRYPxUakNXhpP0EedT/KmaPzr0H5lIsDogrykbaxOpOfAFfk5XA7DZrJyMAv1wlMV3CPcZruGXVVUZw==
+
+prettier@^1.18.2:
+  version "1.18.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.18.2.tgz#6823e7c5900017b4bd3acf46fe9ac4b4d7bda9ea"
+  integrity sha512-OeHeMc0JhFE9idD4ZdtNibzY0+TPHSpSSb9h8FqtP+YnoZZ1sl8Vc9b1sasjfymH3SonAF4QcA2+mzHPhMvIiw==
 
 pretty-error@^2.0.2:
   version "2.1.1"

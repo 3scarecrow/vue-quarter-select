@@ -17,9 +17,9 @@ sidebar: auto
 
 ### 基本使用
 
-<demo-box title="单选模式">
+<demo-box>
 
-绑定值可任意。
+通过v-model绑定选择后的值
 
 <demo-default slot="demo" />
 
@@ -31,23 +31,13 @@ sidebar: auto
 
 </demo-box>
 
-<box-wrapper>
+### 绑定值格式
 
-<demo-default/>
+<demo-box>
 
-<div slot="code">
+value-format可以指定绑定值的格式
 
-<<< docs/.vuepress/components/demo/default.vue
-
-</div>
-
-</box-wrapper>
-
-### 格式化输出值
-
-<box-wrapper>
-
-<demo-value-format/>
+<demo-value-format slot="demo" />
 
 <div slot="code">
 
@@ -55,19 +45,16 @@ sidebar: auto
 
 </div>
 
-</box-wrapper>
+</demo-box>
 
 ### 禁用选项
 
-<box-wrapper>
+<demo-box>
 
-<div slot="des">
 设置min-date属性： 小于min-date日期对应的季度将禁用（不可选择）<br/>
 设置max-date属性： 大于max-date日期对应的季度将禁用（不可选择）
 
-</div>
-
-<demo-disabled/>
+<demo-disabled slot="demo" />
 
 <div slot="code">
 
@@ -75,44 +62,44 @@ sidebar: auto
 
 </div>
 
-</box-wrapper>
+</demo-box>
 
-### 自定义输入框显示值
+### 日期格式
 
-<box-wrapper>
+<demo-box>
 
-<div slot="des">
+<h4>使用format指定输入框的格式</h4>
 
-customValue(year, quarter, date)<br/>
-1.year: 选择的年份，例： 2019<br/>
-2.quarter: 选择的季度，值为[1,2,3,4]之一<br/>
-3.date: 选择季度对应的日期，例：[ "2019-01-01", "2019-03-31" ]
+format函数有三个参数 year, quarter, date<br/>
+**year**: 选择的年份，例: 2019<br/>
+**quarter**: 选择的季度，值为 [1,2,3,4] 之一<br/>
+**date**: 选择季度对应的日期，例：[ "2019-01-01", "2019-03-31" ]
 
-</div>
-
-<demo-custom-value/>
+<demo-format slot="demo" />
 
 <div slot="code">
 
-<<< docs/.vuepress/components/demo/custom-value.vue
+<<< docs/.vuepress/components/demo/format.vue
 
 </div>
 
-</box-wrapper>
+</demo-box>
 
-### 自定义下拉选项文本
+### 下拉选项文本
 
-<box-wrapper>
+<demo-box>
 
-<demo-custom-select-items/>
+select-items可以自定义下拉选项文本
+
+<demo-select-items slot="demo" />
 
 <div slot="code">
 
-<<< docs/.vuepress/components/demo/custom-select-items.vue
+<<< docs/.vuepress/components/demo/select-items.vue
 
 </div>
 
-</box-wrapper>
+</demo-box>
 
 </client-only>
 
@@ -125,8 +112,8 @@ customValue(year, quarter, date)<br/>
 | placeholder | string | `''` | placeholder |
 | minDate | string/date | `undefined` | 小于最小日期的季度将禁用 |
 | maxDate | string/date | `undefined` | 大于最大日期的季度将禁用 |
-| custom-value | function(year,quarter,date) | - | 自定义选择后输入框显示的值 |
-| custom-select-items | function | - | 自定义下拉选项文本 |
+| format | function(year,quarter,date) | - | 使用format指定输入框的格式 |
+| select-items | Array | - | 自定义下拉选项文本 |
 | dropdown-width | number/string | `undefined` | 下拉弹出元素宽度，若不设置则与触发元素相同宽度。 |
 | dropdown-z-index | number | `1000` | 下拉弹出元素的 z-index 值 |
 | disabled | boolean | `false` | 是否禁用 |

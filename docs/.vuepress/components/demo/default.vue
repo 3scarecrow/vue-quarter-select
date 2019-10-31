@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>date: {{date}}</div>
-    <vue-quarter-select v-model="date"></vue-quarter-select>
+    <VueQuarterSelect v-model="date"></VueQuarterSelect>
   </div>
 </template>
 

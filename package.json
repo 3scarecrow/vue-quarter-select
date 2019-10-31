@@ -23,7 +23,6 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@3scarecrow/vue-quarter-select": "^0.1.1",
     "@laomao800/vue-demo-box": "^1.1.5",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
@@ -35,6 +34,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "postcss-url": "^8.0.0",
+    "prettier": "^1.18.2",
     "rollup": "^1.25.2",
     "rollup-plugin-buble": "^0.19.8",
     "rollup-plugin-commonjs": "^10.1.0",
