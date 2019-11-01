@@ -7,6 +7,12 @@ script:
   - npm run test:unit
 
 deploy:
+  - provider: npm
+    email: 1648314523@qq.com
+    api_key: $NPM_TOKEN
+    on:
+      tags: true
+      repo: 3scarecrow/vue-quarter-select
   - provider: pages
     local-dir: docs/.vuepress/dist
     skip-cleanup: true
@@ -14,9 +20,3 @@ deploy:
     email: 1648314523@qq.com
     on:
       branch: master
-  - provider: npm
-    email: 1648314523@qq.com
-    api_key: $NPM_TOKEN
-    on:
-      tags: true
-      repo: 3scarecrow/vue-quarter-select

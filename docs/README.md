@@ -50,9 +50,9 @@ value-format可以指定绑定值的格式
 ### 禁用选项
 
 <demo-box>
-
-设置min-date属性： 小于min-date日期对应的季度将禁用（不可选择）<br/>
-设置max-date属性： 大于max-date日期对应的季度将禁用（不可选择）
+**若需要禁用选项可设置min-date和max-date属性实现<br/>
+min-date： 小于min-date日期对应的季度将禁用（不可选择）<br/>
+max-date： 大于max-date日期对应的季度将禁用（不可选择）
 
 <demo-disabled slot="demo" />
 
@@ -64,7 +64,7 @@ value-format可以指定绑定值的格式
 
 </demo-box>
 
-### 日期格式
+### 输入框文本格式
 
 <demo-box>
 
@@ -101,28 +101,48 @@ select-items可以自定义下拉选项文本
 
 </demo-box>
 
+### 默认显示季度
+
+<demo-box>
+
+default-value可显示默认季度
+
+<demo-default-value slot="demo" />
+
+<div slot="code">
+
+<<< docs/.vuepress/components/demo/default-value.vue
+
+</div>
+
+</demo-box>
+
 </client-only>
 
 ## Props
 
 | prop | type | default | description |
 | --- | --- | --- | --- |
-| value/v-model | string/array | `[]` | 绑定值 |
-| value-format | string | `yyyy-MM-dd` | 绑定值的格式 |
-| placeholder | string | `''` | placeholder |
-| minDate | string/date | `undefined` | 小于最小日期的季度将禁用 |
-| maxDate | string/date | `undefined` | 大于最大日期的季度将禁用 |
-| format | function(year,quarter,date) | - | 使用format指定输入框的格式 |
+| value/v-model | String/Array | `[]` | 绑定值 |
+| value-format | String | `yyyy-MM-dd` | 绑定值的格式 |
+| minDate | String/Date | `undefined` | 小于最小日期的季度将禁用 |
+| maxDate | String/Date | `undefined` | 大于最大日期的季度将禁用 |
+| format | Function(year,quarter,date) | - | 使用format指定输入框的格式 |
 | select-items | Array | - | 自定义下拉选项文本 |
-| dropdown-width | number/string | `undefined` | 下拉弹出元素宽度，若不设置则与触发元素相同宽度。 |
-| dropdown-z-index | number | `1000` | 下拉弹出元素的 z-index 值 |
-| disabled | boolean | `false` | 是否禁用 |
-| size | string | `''` | 控件尺寸，可选值 `medium/small/mini` |
-| clearable | boolean | `false` | 是否启用清空所有选项功能 |
-| popper-class | string | `''` | 下拉弹出元素 class 名 |
+| default-value | Date | - | 默认显示的季度 |
+
+更多Props可查阅 [vue-select-wrapper 的Props](https://laomao800.github.io/vue-select-wrapper/zh/#props)
+
+## Methods
+
+| Methods | Descripion |
+| ------- | ---------- |
+| clear   | 清空绑定值  |
 
 ## Events
 
 | Event | Description | Params |
 | ----- | ----------- | ------ |
 | clear | 点击清空时触发 | - |
+
+更多Events可查阅 [vue-select-wrapper 的Events](http://localhost:8083/vue-quarter-select/#events)

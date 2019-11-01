@@ -1,9 +1,11 @@
 <template>
   <VueSelectWrapper
+    ref="selectWrapper"
     v-model="formatValue"
     :placeholder="placeholder"
     :clearable="clearable"
     v-bind="$attrs"
+    v-on="$listeners"
     @clear="clear"
   >
     <div class="quarter">
@@ -26,9 +28,10 @@
           :key="item.value"
           :class="[
             'quarter__item',
-            isDisabledQuarter(item.value) ? 'quarter__item_disabled' : ''
+            isDisabled(item.value) ? 'disabled' : '',
+            isSelected(item.value) ? 'selected' : ''
           ]"
-          @click="!isDisabledQuarter(item.value) && setDate(item.value)"
+          @click="!isDisabled(item.value) && setDate(item.value)"
         >{{ item.key }}</li>
       </ul>
     </div>
@@ -45,11 +48,9 @@ import {
   getYear,
   getQuarter
 } from './utils/helper.js'
-// eslint-disable-next-line no-unused-vars
-import { warn, error } from './utils/debug.js'
 
 export default {
-  name: 'QuarterSelector',
+  name: 'QuarterSelect',
 
   components: {
     VueSelectWrapper
@@ -57,7 +58,7 @@ export default {
 
   model: {
     prop: 'value',
-    event: 'change'
+    event: 'done'
   },
 
   props: {
@@ -92,13 +93,18 @@ export default {
     selectItems: {
       type: Array,
       default: () => ['第一季度', '第二季度', '第三季度', '第四季度']
+    },
+    defaultValue: {
+      type: Date
     }
   },
 
   data() {
     return {
       formatValue: '',
-      year: new Date().getFullYear()
+      year: new Date().getFullYear(),
+      selectedYear: new Date().getFullYear(),
+      selectedQuarter: ''
     }
   },
 
@@ -114,11 +120,22 @@ export default {
   mounted() {
     // 保留组件传递进来的初始值，于清空时设置其初始值
     this.originValue = typeof this.value === 'string' ? '' : []
+    if (this.defaultValue) {
+      this.year = getYear(this.defaultValue)
+      this.setDate(getQuarter(this.defaultValue))
+    }
+    this.$refs.selectWrapper && (this.selectWrapper = this.$refs.selectWrapper)
   },
 
   methods: {
+    isSelected(quarter) {
+      if (this.year === this.selectedYear && quarter === this.selectedQuarter) {
+        return true
+      }
+      return false
+    },
     // 设置禁用项
-    isDisabledQuarter(quarter) {
+    isDisabled(quarter) {
       const minQuarter = this.minDate && getQuarter(this.minDate)
       const maxQuarter = this.maxDate && getQuarter(this.maxDate)
       const minYear = this.minDate && getYear(this.minDate)
@@ -178,12 +195,17 @@ export default {
         formatDate(beginDate, this.valueFormat),
         formatDate(endDate, this.valueFormat)
       ]
+      // 选择后保存选中的年份和季度
+      this.selectedYear = this.year
+      this.selectedQuarter = quarter
       this.transformValue(quarter, date)
-      this.$emit('change', date)
+      this.$emit('done', date)
     },
 
     clear() {
-      this.$emit('change', this.originValue)
+      this.selectedQuarter = ''
+      this.formatValue = ''
+      this.$emit('done', this.originValue)
     }
   }
 }
