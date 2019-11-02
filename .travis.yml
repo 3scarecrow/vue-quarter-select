@@ -13,10 +13,10 @@ deploy:
     on:
       # tags: true
       repo: 3scarecrow/vue-quarter-select
-  # - provider: pages
-    # local-dir: docs/.vuepress/dist
-    # skip-cleanup: true
-    # github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-    # email: 1648314523@qq.com
-    # on:
-    #   branch: master
+  - provider: pages
+    local-dir: docs/.vuepress/dist
+    skip-cleanup: true
+    github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+    email: 1648314523@qq.com
+    on:
+      branch: master
