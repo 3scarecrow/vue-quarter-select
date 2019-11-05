@@ -50,7 +50,8 @@ value-format可以指定绑定值的格式
 ### 禁用选项
 
 <demo-box>
-**若需要禁用选项可设置min-date和max-date属性实现<br/>
+
+**若需要禁用选项可设置min-date和max-date属性实现**<br/>
 min-date： 小于min-date日期对应的季度将禁用（不可选择）<br/>
 max-date： 大于max-date日期对应的季度将禁用（不可选择）
 

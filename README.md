@@ -20,7 +20,7 @@ npm install --save @3scarecorw/vue-quarter-select
 
 ## Documentation
 
-[中文](https://3scarecrow.github.io/vue-quarter-select/)
+[中文文档](https://3scarecrow.github.io/vue-quarter-select/)
 
 ## Usage
 
