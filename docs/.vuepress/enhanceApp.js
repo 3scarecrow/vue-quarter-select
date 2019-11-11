@@ -12,7 +12,7 @@ export default({ Vue }) => {
       Vue.use(DemoBox, {
         jsRes: [
           '//unpkg.com/vue/dist/vue.js',
-          '//unpkg.com/@3scarecrow/vue-quarter-select/dist/vue-quarter-select.esm.js'
+          '//unpkg.com/@3scarecrow/vue-quarter-select/dist/vue-quarter-select.umd.js'
         ]
       })
     })

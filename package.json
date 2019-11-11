@@ -4,7 +4,6 @@
   "description": "A basic Vue.js selector that can select quarter",
   "author": "3scarecrow",
   "main": "dist/vue-quarter-select.umd.min.js",
-  "module": "dist/vue-quarter-select.esm.js",
   "files": [
     "dist"
   ],

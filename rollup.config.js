@@ -35,8 +35,8 @@ export default[
   {
     ...commonConfig,
     output: {
-      format: 'es',
-      file: 'dist/vue-quarter-select.esm.js',
+      format: 'cjs',
+      file: 'dist/vue-quarter-select.common.js',
       banner
     }
   },
@@ -46,7 +46,6 @@ export default[
       format: 'umd',
       file: 'dist/vue-quarter-select.umd.js',
       name: 'vue-quarter-select',
-      exports: 'named',
       banner
     }
   },
@@ -56,7 +55,6 @@ export default[
       format: 'umd',
       file: 'dist/vue-quarter-select.umd.min.js',
       name: 'vue-quarter-select',
-      exports: 'named',
       banner
     },
     plugins: [
