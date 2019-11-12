@@ -1,6 +1,6 @@
 /**
  * @preserve
- * @3scarecrow/vue-quarter-select v1.0.2-beta.0
+ * @3scarecrow/vue-quarter-select v1.0.2
  */
 'use strict';
 
