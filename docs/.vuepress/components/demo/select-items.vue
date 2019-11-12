@@ -1,10 +1,10 @@
 <template>
   <div>
     <div>date: {{date}}</div>
-    <VueQuarterSelect
+    <vue-quarter-select
       v-model="date"
       :select-items="selectItems"
-    ></VueQuarterSelect>
+    ></vue-quarter-select>
   </div>
 </template>
 

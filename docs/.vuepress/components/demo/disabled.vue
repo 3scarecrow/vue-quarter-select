@@ -1,11 +1,11 @@
 <template>
   <div>
     <div>date: {{date}}</div>
-    <VueQuarterSelect
+    <vue-quarter-select
       v-model="date"
       minDate="2019-04-10"
       :max-date="new Date('2020-01-01')"
-    ></VueQuarterSelect>
+    ></vue-quarter-select>
   </div>
 </template>
 
