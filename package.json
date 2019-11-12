@@ -18,9 +18,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@laomao800/vue-select-wrapper": "^1.2.0",
-    "core-js": "^3.1.2",
-    "vue": "^2.6.10"
+    "@laomao800/vue-select-wrapper": "^1.2.0"
   },
   "devDependencies": {
     "@laomao800/vue-demo-box": "^1.1.5",
@@ -31,6 +29,7 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "autoprefixer": "^9.6.5",
     "babel-eslint": "^10.0.1",
+    "core-js": "^3.4.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "execa": "^3.2.0",
@@ -44,6 +43,7 @@
     "rollup-plugin-uglify": "^6.0.3",
     "rollup-plugin-vue": "^5.0.1",
     "semver": "^6.3.0",
+    "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10",
     "vuepress": "^1.2.0"
   },
