@@ -15,7 +15,7 @@ yarn add @3scarecrow/vue-quarter-select
 
 ```sh
 #npm
-npm install --save @3scarecorw/vue-quarter-select
+npm install --save @3scarecrow/vue-quarter-select
 ```
 
 ## Documentation
