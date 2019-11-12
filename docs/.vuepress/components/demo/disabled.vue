@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="value-format__item">
     <div>date: {{date}}</div>
     <vue-quarter-select
       v-model="date"
-      minDate="2019-04-10"
+      min-date="2019-04-10"
       :max-date="new Date('2020-01-01')"
     ></vue-quarter-select>
   </div>
@@ -19,5 +19,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.value-format__item {
+  width: 350px;
+}
 </style>

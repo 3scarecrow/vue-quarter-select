@@ -24,7 +24,7 @@
       </div>
       <ul class="quarter__list">
         <li
-          v-for="item in formatSelectItems"
+          v-for="item in formatDropdownOptions"
           :key="item.value"
           :class="[
             'quarter__item',
@@ -90,7 +90,7 @@ export default {
         return `${year}年 第${quarter}季度`
       }
     },
-    selectItems: {
+    dropdownOptions: {
       type: Array,
       default: () => ['第一季度', '第二季度', '第三季度', '第四季度']
     },
@@ -109,8 +109,8 @@ export default {
   },
 
   computed: {
-    formatSelectItems() {
-      return this.selectItems.map((item, index) => ({
+    formatDropdownOptions() {
+      return this.dropdownOptions.map((item, index) => ({
         key: item,
         value: index + 1
       }))

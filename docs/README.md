@@ -9,17 +9,17 @@ sidebar: auto
 
 # Vue quarter select
 
-一个基于 Vue.js 的季度选择器
+A quarter selector based on Vue.js
 
 <client-only>
 
 ## Example
 
-### 基本使用
+### basic usage
 
 <demo-box>
 
-通过v-model绑定选择后的值
+bind selected value by `v-model`
 
 <demo-default slot="demo" />
 
@@ -31,11 +31,11 @@ sidebar: auto
 
 </demo-box>
 
-### 绑定值格式
+### value format
 
 <demo-box>
 
-value-format可以指定绑定值的格式
+custom binding value format by `value-format`
 
 <demo-value-format slot="demo" />
 
@@ -47,13 +47,13 @@ value-format可以指定绑定值的格式
 
 </demo-box>
 
-### 禁用选项
+### disabled option
 
 <demo-box>
 
-**若需要禁用选项可设置min-date和max-date属性实现**<br/>
-min-date： 小于min-date日期对应的季度将禁用（不可选择）<br/>
-max-date： 大于max-date日期对应的季度将禁用（不可选择）
+**If you need set some option disabled, you can implement with the help of `min-date` and `max-date`**<br/>
+min-date: those quarter that less than the `min-date` will be disabled<br/>
+max-date: those quarter that more than the `max-date` will be disabled
 
 <demo-disabled slot="demo" />
 
@@ -65,16 +65,17 @@ max-date： 大于max-date日期对应的季度将禁用（不可选择）
 
 </demo-box>
 
-### 输入框文本格式
+### input text format
 
 <demo-box>
 
-<h4>使用format指定输入框的格式</h4>
+<h4>custom input text format by function format </h4>
 
-format函数有三个参数 year, quarter, date<br/>
-**year**: 选择的年份，例: 2019<br/>
-**quarter**: 选择的季度，值为 [1,2,3,4] 之一<br/>
-**date**: 选择季度对应的日期，例：[ "2019-01-01", "2019-03-31" ]
+Function format has three parameter: year, quarter, date<br/>
+
+- **year**: selected year, eg: 2019<br/>
+- **quarter**: selected quarter, value is one of [1,2,3,4] <br/>
+- **date**: the date corresponding to the selected quarter, eg: [ "2019-01-01", "2019-03-31" ]
 
 <demo-format slot="demo" />
 
@@ -86,27 +87,27 @@ format函数有三个参数 year, quarter, date<br/>
 
 </demo-box>
 
-### 下拉选项文本
+### dropdown option text
 
 <demo-box>
 
-select-items可以自定义下拉选项文本
+custom dropdown option text by `dropdown-options`
 
-<demo-select-items slot="demo" />
+<demo-dropdown-options slot="demo" />
 
 <div slot="code">
 
-<<< docs/.vuepress/components/demo/select-items.vue
+<<< docs/.vuepress/components/demo/dropdown-options.vue
 
 </div>
 
 </demo-box>
 
-### 默认显示季度
+### default quarter
 
 <demo-box>
 
-default-value可显示默认季度
+set up default quarter by `default-value`
 
 <demo-default-value slot="demo" />
 
@@ -124,26 +125,26 @@ default-value可显示默认季度
 
 | prop | type | default | description |
 | --- | --- | --- | --- |
-| value/v-model | String/Array | `[]` | 绑定值 |
-| value-format | String | `yyyy-MM-dd` | 绑定值的格式 |
-| minDate | String/Date | `undefined` | 小于最小日期的季度将禁用 |
-| maxDate | String/Date | `undefined` | 大于最大日期的季度将禁用 |
-| format | Function(year,quarter,date) | - | 使用format指定输入框的格式 |
-| select-items | Array | - | 自定义下拉选项文本 |
-| default-value | Date | - | 默认显示的季度 |
+| value/v-model | String/Array | `[]` | binding value |
+| value-format | String | `yyyy-MM-dd` | format of binding value |
+| minDate | String/Date | `undefined` | those quarter that less than the `min-date` will be disabled |
+| maxDate | String/Date | `undefined` | those quarter that more than the `max-date` will be disabled |
+| format | Function(year,quarter,date) | - | custom input text format by function format |
+| select-items | Array | - | custom dropdown option text by `select-items` |
+| default-value | Date | - | set up default quarter by `default-value` |
 
-更多Props可查阅 [vue-select-wrapper 的Props](https://laomao800.github.io/vue-select-wrapper/zh/#props)
+See [vue-select-wrapper 的Props](https://laomao800.github.io/vue-select-wrapper/zh/#props) for more Props
 
 ## Methods
 
 | Methods | Descripion |
 | ------- | ---------- |
-| clear   | 清空绑定值  |
+| clear   | clear binding value  |
 
 ## Events
 
 | Event | Description | Params |
 | ----- | ----------- | ------ |
-| clear | 点击清空时触发 | - |
+| clear | trigger when emptying  | - |
 
-更多Events可查阅 [vue-select-wrapper 的Events](http://localhost:8083/vue-quarter-select/#events)
+See [vue-select-wrapper 的Events](http://localhost:8083/vue-quarter-select/#events) for more Events

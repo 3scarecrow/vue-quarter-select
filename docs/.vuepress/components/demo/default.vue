@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="value-format__item">
     <div>date: {{date}}</div>
     <vue-quarter-select v-model="date"></vue-quarter-select>
   </div>
@@ -14,3 +14,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.value-format__item {
+  width: 350px;
+}
+</style>
