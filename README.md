@@ -1,6 +1,6 @@
 # vue-quarter-select
 
-![build](<https://api.travis-ci.org/3scarecrow/vue-quarter-select.svg?branch=master>)
+![Travis (.org)](https://img.shields.io/travis/3scarecrow/vue-quarter-select)
 
 A basic Vue.js selector that can select quarter.
 
