@@ -3,7 +3,10 @@
     id="demo"
     style="padding-top: 100px;margin: 0 auto;"
   >
-    <VueQuarterSelect v-model="date" />
+    <VueQuarterSelect
+      v-model="date"
+    >
+    </VueQuarterSelect>
   </div>
 </template>
 <script>

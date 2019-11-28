@@ -118,11 +118,27 @@ default-value可显示默认季度
 
 </demo-box>
 
+### slot
+
+<demo-box>
+
+通过 `slot-scope`自定义下拉选项模板
+
+<demo-slot-scope slot="demo" />
+
+<div slot="code">
+
+<<< docs/.vuepress/components/demo/slot-scope.vue
+
+</div>
+
+</demo-box>
+
 </client-only>
 
 ## Props
 
-| prop | type | default | description |
+| 参数 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | value/v-model | String/Array | `[]` | 绑定值 |
 | value-format | String | `yyyy-MM-dd` | 绑定值的格式 |
@@ -136,14 +152,22 @@ default-value可显示默认季度
 
 ## Methods
 
-| Methods | Descripion |
-| ------- | ---------- |
-| clear   | 清空绑定值  |
+| 方法名 | 说明 | 参数 |
+| ------- | ---------- | --- |
+| clear   | 清空绑定值  | — |
 
 ## Events
 
-| Event | Description | Params |
+| 事件名 | 说明 | 参数 |
 | ----- | ----------- | ------ |
-| clear | 点击清空时触发 | - |
+| change | 选项变化时 | newVal |
+| visible-change | 下拉框出现/隐藏时 | 出现则为 true，隐藏则为 false |
+| clear | 点击清空时触发 | — |
 
 更多Events可查阅 [vue-select-wrapper 的Events](http://localhost:8083/vue-quarter-select/#events)
+
+## Slots
+
+| Name | 参数 | 说明 |
+| ----- | ----------- | ------ |
+| default | { label, value } | 自定义下拉选项模板 |

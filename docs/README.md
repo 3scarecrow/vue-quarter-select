@@ -119,6 +119,22 @@ set up default quarter by `default-value`
 
 </demo-box>
 
+### slot
+
+<demo-box>
+
+Slot for custom option template by `slot-scope`
+
+<demo-slot-scope slot="demo" />
+
+<div slot="code">
+
+<<< docs/.vuepress/components/demo/slot-scope.vue
+
+</div>
+
+</demo-box>
+
 </client-only>
 
 ## Props
@@ -137,14 +153,20 @@ See [vue-select-wrapper 的Props](https://laomao800.github.io/vue-select-wrapper
 
 ## Methods
 
-| Methods | Descripion |
-| ------- | ---------- |
-| clear   | clear binding value  |
+| Methods | Descripion | Parameters |
+| ------- | ---------- | ------ |
+| clear   | clear binding value  | — |
 
 ## Events
 
-| Event | Description | Params |
+| Event | Description | Parameters |
 | ----- | ----------- | ------ |
-| clear | trigger when emptying  | - |
+| change | Trigger on value change | (newVal) |
+| visible-change | Trigger on dropdown toggle | (visible) true for show, false for hide|
+| clear | trigger when emptying  | — |
 
-See [vue-select-wrapper 的Events](http://localhost:8083/vue-quarter-select/#events) for more Events
+## Slots
+
+| Name | Props | Description |
+| ----- | ----------- | ------ |
+| default | { label, value } | Slot for custom option template |

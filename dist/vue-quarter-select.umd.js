@@ -1,6 +1,6 @@
 /**
  * @preserve
- * @3scarecrow/vue-quarter-select v1.0.2
+ * @3scarecrow/vue-quarter-select v1.1.0
  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -1066,6 +1066,8 @@
       VueSelectWrapper: vueSelectWrapper_common
     },
 
+    inheritAttrs: false,
+
     model: {
       prop: 'value',
       event: 'done'
@@ -1121,7 +1123,7 @@
     computed: {
       formatDropdownOptions: function formatDropdownOptions() {
         return this.dropdownOptions.map(function (item, index) { return ({
-          key: item,
+          label: item,
           value: index + 1
         }); })
       }
@@ -1421,23 +1423,32 @@
           _c(
             "ul",
             { staticClass: "quarter__list" },
-            _vm._l(_vm.formatDropdownOptions, function(item) {
+            _vm._l(_vm.formatDropdownOptions, function(option) {
               return _c(
                 "li",
                 {
-                  key: item.value,
-                  class: [
-                    "quarter__item",
-                    _vm.isDisabled(item.value) ? "disabled" : "",
-                    _vm.isSelected(item.value) ? "selected" : ""
-                  ],
+                  key: option.value,
+                  staticClass: "quarter__item",
+                  class: {
+                    disabled: _vm.isDisabled(option.value),
+                    selected: _vm.isSelected(option.value)
+                  },
                   on: {
                     click: function($event) {
-                      !_vm.isDisabled(item.value) && _vm.setDate(item.value);
+                      !_vm.isDisabled(option.value) && _vm.setDate(option.value);
                     }
                   }
                 },
-                [_vm._v(_vm._s(item.key))]
+                [
+                  _vm._t(
+                    "default",
+                    [
+                      _vm._v("\n          " + _vm._s(option.label) + "\n        ")
+                    ],
+                    { option: option }
+                  )
+                ],
+                2
               )
             }),
             0
@@ -1452,7 +1463,7 @@
     /* style */
     var __vue_inject_styles__$1 = function (inject) {
       if (!inject) { return }
-      inject("data-v-96844124_0", { source: "/**\r\n *  quarter-selector layout\r\n */\r\n.quarter__header {\r\n  padding-bottom: 12px;\r\n  border-bottom: 1px solid #ebeef5;\r\n  margin: 12px 12px 0 12px;\r\n  text-align: center;\r\n}\r\n\r\n.quarter__button_disabled {\r\n  cursor: not-allowed !important;\r\n}\r\n\r\n.iconfont {\r\n  width: 12px;\r\n  height: 12px;\r\n  border: 0;\r\n  background: transparent;\r\n  cursor: pointer;\r\n  outline: none;\r\n  margin-top: 5px;\r\n}\r\n\r\n.icon-prev {\r\n  float: left;\r\n  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAzUlEQVQoU3XRMUpDQRCH8V9IYWltHfACdoKksrORiJAUIRYJglqJBFIktY2tAWsvkBsEIYE09kEP4Q1kYBeWsG+6N/N9+/6z29JcXayL8Sn2rQY+4Bs8pfkC31jVhIDvMCrgH3zG96EQcIAhRE3xh2VOUgrnCRyn4QRtvJexs3CGAO/T8BbH+DjcMQsXmOMyAUO84qRJiH5EesF1gvrppnq1SLkXUsSKP0Q94AhvtaVLaYDH1HjGBtvatZbSFWaFtMNX00vnneLkXB38/gP9Wh0NSXyxKwAAAABJRU5ErkJggg==);\r\n  background-repeat: no-repeat;\r\n}\r\n\r\n.icon-next {\r\n  float: right;\r\n  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAABLElEQVQoU22SvUoDQRDHZ+4FfAjF9m52LwED4hv4AtZCbAVBCAiWFqnURhs7QVT8AAURQiwsvI/ZLdII1taWFrmRvY94yd02u3/4/XZm2EUAAK31cpIkX+7sVhB0esZE71Wu7+iCUmpdBLvMydBlIn0g4r22SblQQLQG4PUqKVDhADIcLUozwUk+6V1E+TVpelpW2hfx3urSnFBI4Y0HcM0cXxbzqD1EGTFz7HJDKCt9o2DfmPg+l1Q4kCneWRtNWoUgUNsi8GNtelW2NgTAMXP80BCI9E6GMrVpelbefoICLw5utESk+xnAkuXkKIdJnyPgYwXPCYFSW5DBijHpYQlfIOBtHZ4JROGmSEYVTKSOAbwn5vh58bXzGXy/u2rtx+f/I3Y2mKNx29f4A2rdhQ0Ah41XAAAAAElFTkSuQmCC);\r\n  background-repeat: no-repeat;\r\n}\r\n\r\n.quarter__header-label {\r\n  font-size: 16px;\r\n  font-weight: 500;\r\n  padding: 0 5px;\r\n  line-height: 22px;\r\n  text-align: center;\r\n  cursor: default;\r\n  color: #606266;\r\n}\r\n\r\n.quarter__list {\r\n  list-style: none;\r\n  padding: 6px 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n  text-align: center;\r\n}\r\n\r\n.quarter__item {\r\n  font-size: 14px;\r\n  padding: 0 20px;\r\n  position: relative;\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  color: #606266;\r\n  height: 34px;\r\n  line-height: 34px;\r\n  box-sizing: border-box;\r\n  cursor: pointer;\r\n}\r\n\r\n.quarter__item:hover {\r\n  background-color: #f5f7fa;\r\n}\r\n.quarter__item.selected {\r\n  color: #409eff;\r\n  font-weight: 700;\r\n}\r\n\r\n.quarter__item.disabled {\r\n  color: #c0c4cc;\r\n  cursor: not-allowed;\r\n}\r\n", map: undefined, media: undefined });
+      inject("data-v-0d1a9163_0", { source: "/**\r\n *  quarter-selector layout\r\n */\r\n.quarter__header {\r\n  padding-bottom: 12px;\r\n  border-bottom: 1px solid #ebeef5;\r\n  margin: 12px 12px 0 12px;\r\n  text-align: center;\r\n}\r\n\r\n.quarter__button_disabled {\r\n  cursor: not-allowed !important;\r\n}\r\n\r\n.iconfont {\r\n  width: 12px;\r\n  height: 12px;\r\n  border: 0;\r\n  background: transparent;\r\n  cursor: pointer;\r\n  outline: none;\r\n  margin-top: 5px;\r\n}\r\n\r\n.icon-prev {\r\n  float: left;\r\n  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAzUlEQVQoU3XRMUpDQRCH8V9IYWltHfACdoKksrORiJAUIRYJglqJBFIktY2tAWsvkBsEIYE09kEP4Q1kYBeWsG+6N/N9+/6z29JcXayL8Sn2rQY+4Bs8pfkC31jVhIDvMCrgH3zG96EQcIAhRE3xh2VOUgrnCRyn4QRtvJexs3CGAO/T8BbH+DjcMQsXmOMyAUO84qRJiH5EesF1gvrppnq1SLkXUsSKP0Q94AhvtaVLaYDH1HjGBtvatZbSFWaFtMNX00vnneLkXB38/gP9Wh0NSXyxKwAAAABJRU5ErkJggg==);\r\n  background-repeat: no-repeat;\r\n}\r\n\r\n.icon-next {\r\n  float: right;\r\n  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAABLElEQVQoU22SvUoDQRDHZ+4FfAjF9m52LwED4hv4AtZCbAVBCAiWFqnURhs7QVT8AAURQiwsvI/ZLdII1taWFrmRvY94yd02u3/4/XZm2EUAAK31cpIkX+7sVhB0esZE71Wu7+iCUmpdBLvMydBlIn0g4r22SblQQLQG4PUqKVDhADIcLUozwUk+6V1E+TVpelpW2hfx3urSnFBI4Y0HcM0cXxbzqD1EGTFz7HJDKCt9o2DfmPg+l1Q4kCneWRtNWoUgUNsi8GNtelW2NgTAMXP80BCI9E6GMrVpelbefoICLw5utESk+xnAkuXkKIdJnyPgYwXPCYFSW5DBijHpYQlfIOBtHZ4JROGmSEYVTKSOAbwn5vh58bXzGXy/u2rtx+f/I3Y2mKNx29f4A2rdhQ0Ah41XAAAAAElFTkSuQmCC);\r\n  background-repeat: no-repeat;\r\n}\r\n\r\n.quarter__header-label {\r\n  font-size: 16px;\r\n  font-weight: 500;\r\n  padding: 0 5px;\r\n  line-height: 22px;\r\n  text-align: center;\r\n  cursor: default;\r\n  color: #606266;\r\n}\r\n\r\n.quarter__list {\r\n  list-style: none;\r\n  padding: 6px 0;\r\n  margin: 0;\r\n  -webkit-box-sizing: border-box;\r\n          box-sizing: border-box;\r\n  text-align: center;\r\n}\r\n\r\n.quarter__item {\r\n  font-size: 14px;\r\n  padding: 0 20px;\r\n  position: relative;\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  color: #606266;\r\n  height: 34px;\r\n  line-height: 34px;\r\n  -webkit-box-sizing: border-box;\r\n          box-sizing: border-box;\r\n  cursor: pointer;\r\n}\r\n\r\n.quarter__item:hover {\r\n  background-color: #f5f7fa;\r\n}\r\n.quarter__item.selected {\r\n  color: #409eff;\r\n  font-weight: 700;\r\n}\r\n\r\n.quarter__item.disabled {\r\n  color: #c0c4cc;\r\n  cursor: not-allowed;\r\n}\r\n", map: undefined, media: undefined });
 
     };
     /* scoped */

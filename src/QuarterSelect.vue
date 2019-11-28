@@ -24,15 +24,19 @@
       </div>
       <ul class="quarter__list">
         <li
-          v-for="item in formatDropdownOptions"
-          :key="item.value"
-          :class="[
-            'quarter__item',
-            isDisabled(item.value) ? 'disabled' : '',
-            isSelected(item.value) ? 'selected' : ''
-          ]"
-          @click="!isDisabled(item.value) && setDate(item.value)"
-        >{{ item.key }}</li>
+          v-for="option in formatDropdownOptions"
+          :key="option.value"
+          class="quarter__item"
+          :class="{
+            'disabled': isDisabled(option.value),
+            'selected': isSelected(option.value)
+          }"
+          @click="!isDisabled(option.value) && setDate(option.value)"
+        >
+          <slot :option="option">
+            {{ option.label }}
+          </slot>
+        </li>
       </ul>
     </div>
   </VueSelectWrapper>
@@ -55,6 +59,8 @@ export default {
   components: {
     VueSelectWrapper
   },
+
+  inheritAttrs: false,
 
   model: {
     prop: 'value',
@@ -111,7 +117,7 @@ export default {
   computed: {
     formatDropdownOptions() {
       return this.dropdownOptions.map((item, index) => ({
-        key: item,
+        label: item,
         value: index + 1
       }))
     }
