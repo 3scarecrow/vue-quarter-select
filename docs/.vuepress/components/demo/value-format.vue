@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="value-format__item">
-      <div>value-format: yyyy-MM-dd</div>
+      <div>value-format: yyyy-MM</div>
       <div>date: {{date}}</div>
-      <vue-quarter-select v-model="date"></vue-quarter-select>
+      <vue-quarter-select v-model="date" value-format="yyyy-MM"></vue-quarter-select>
     </div>
     <div class="value-format__item">
       <div>value-format: timestamp</div>

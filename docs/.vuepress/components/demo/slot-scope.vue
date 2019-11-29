@@ -3,7 +3,7 @@
     <div>date: {{date}}</div>
     <vue-quarter-select v-model="date">
       <template slot-scope="{ option }">
-        <span style="color: green;fontSize:18px;">👧👩👳</span>
+        <span style="color: green;fontSize:18px;">👧👩👳 —— {{option.label}}</span>
       </template>
     </vue-quarter-select>
   </div>

@@ -51,9 +51,9 @@ value-format可以指定绑定值的格式
 
 <demo-box>
 
-**若需要禁用选项可设置min-date和max-date属性实现**<br/>
-min-date： 小于min-date日期对应的季度将禁用（不可选择）<br/>
-max-date： 大于max-date日期对应的季度将禁用（不可选择）
+**设置min-date或max-date属性来实现选项禁用**<br/>
+min-date： 禁用小于min-date日期对应的季度<br/>
+max-date： 禁用大于max-date日期对应的季度
 
 <demo-disabled slot="demo" />
 
@@ -69,12 +69,13 @@ max-date： 大于max-date日期对应的季度将禁用（不可选择）
 
 <demo-box>
 
-<h4>使用format指定输入框的格式</h4>
+<h4>format函数指定输入框的格式</h4>
 
-format函数有三个参数 year, quarter, date<br/>
-**year**: 选择的年份，例: 2019<br/>
-**quarter**: 选择的季度，值为 [1,2,3,4] 之一<br/>
-**date**: 选择季度对应的日期，例：[ "2019-01-01", "2019-03-31" ]
+| 参数 | 类型 | 说明 |
+| ---- | ---- | ---  |
+| year | Number |年份 |
+| quarter | Number | 季度 |
+| date | Array | 日期 |
 
 <demo-format slot="demo" />
 

@@ -51,7 +51,7 @@ custom binding value format by `value-format`
 
 <demo-box>
 
-**If you need set some option disabled, you can implement with the help of `min-date` and `max-date`**<br/>
+**With the help of `min-date` and `max-date`, you can disable some option**<br>
 min-date: those quarter that less than the `min-date` will be disabled<br/>
 max-date: those quarter that more than the `max-date` will be disabled
 
@@ -73,9 +73,11 @@ max-date: those quarter that more than the `max-date` will be disabled
 
 Function format has three parameter: year, quarter, date<br/>
 
-- **year**: selected year, eg: 2019<br/>
-- **quarter**: selected quarter, value is one of [1,2,3,4] <br/>
-- **date**: the date corresponding to the selected quarter, eg: [ "2019-01-01", "2019-03-31" ]
+| paramter | type | description |
+| ---- | ---- | ---  |
+| year | Number | selected year |
+| quarter | Number | selected quarter |
+| date | Array | date |
 
 <demo-format slot="demo" />
 
