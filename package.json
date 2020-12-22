@@ -1,6 +1,6 @@
 {
   "name": "@3scarecrow/vue-quarter-select",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A basic Vue.js selector that can select quarter",
   "author": "3scarecrow",
   "main": "dist/vue-quarter-select.umd.min.js",
@@ -34,6 +34,7 @@
     "babel-eslint": "^10.0.1",
     "core-js": "^3.4.1",
     "cross-env": "^6.0.3",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "execa": "^3.2.0",
@@ -57,6 +58,11 @@
     "quarter",
     "select"
   ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
