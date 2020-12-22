@@ -195,5 +195,5 @@ export function getQuarter(date) {
   const _date = typeof date === 'string'
     ? autoParseDate(date)
     : date
-  return (parseInt((_date.getMonth() + 1) / 3, 10) + 1  )
+  return Math.ceil((_date.getMonth() + 1) / 3)
 }
