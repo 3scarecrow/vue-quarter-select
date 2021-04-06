@@ -125,7 +125,7 @@ set up default quarter by `default-value`
 
 <demo-box>
 
-Slot for custom option template by `slot-scope`
+Slot for custom template of option or header by `slot-scope`
 
 <demo-slot-scope slot="demo" />
 
@@ -172,3 +172,6 @@ See [vue-select-wrapper 的Props](https://laomao800.github.io/vue-select-wrapper
 | Name | Props | Description |
 | ----- | ----------- | ------ |
 | default | { label, value } | Slot for custom option template |
+| header-left | — | Slot for custom header left |
+| header-center | year | Slot for custom header center |
+| header-right | — | Slot for custom header right |

@@ -56,16 +56,20 @@ const release = async () => {
     }
   ])
 
+  const CONFIG = { stdio: 'inherit' }
   if (yes) {
-    await execa('npm', ['run', 'build:lib'], { stdio: 'inherit' })
-    await execa('git', ['add', 'dist'], { stdio: 'inherit' })
+    await execa('npm', ['run', 'build:lib'], CONFIG)
+    await execa('git', ['add', 'dist'], CONFIG)
+    await execa('git', ['commit', '-m', `build: build ${version}`], CONFIG)
     if (genDocs) {
-      await execa('npm', ['run', 'docs:build'], { stdio: 'inherit' })
-      await execa('git', ['add', 'docs/.vuepress/dist'], { stdio: 'inherit' })
+      await execa('npm', ['run', 'docs:build'], CONFIG)
+      await execa('git', ['add', 'docs/.vuepress/dist'], CONFIG)
+      await execa('git', ['commit', '-m', `build: docs ${version}`], CONFIG)
     }
-    await execa('git', ['commit', '-m', `build: build ${version}`], { stdio: 'inherit' })
-    await execa('npm', ['version', version, '-m', `build: release ${version}`], { stdio: 'inherit' })
+    await execa('npm', ['version', version, '-m', `build: release ${version}`], CONFIG)
   }
+
+  require('./gen-changelog')(version)
 }
 
 release().catch(err => {
