@@ -2,36 +2,17 @@
  *  quarter-selector layout
  */
 .quarter__header {
-  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid #ebeef5;
-  margin: 12px 12px 0 12px;
+  padding: 12px;
   text-align: center;
 }
 
-.quarter__button_disabled {
-  cursor: not-allowed !important;
-}
-
-.iconfont {
-  width: 12px;
-  height: 12px;
-  border: 0;
-  background: transparent;
+.quarter__header-icon {
   cursor: pointer;
-  outline: none;
-  margin-top: 5px;
-}
-
-.icon-prev {
-  float: left;
-  background-image: url(./assets/prev.png);
-  background-repeat: no-repeat;
-}
-
-.icon-next {
-  float: right;
-  background-image: url(./assets/next.png);
-  background-repeat: no-repeat;
+  padding: 0 5px;
 }
 
 .quarter__header-label {
@@ -52,7 +33,7 @@
   text-align: center;
 }
 
-.quarter__item {
+.quarter__list__item {
   font-size: 14px;
   padding: 0 20px;
   position: relative;
@@ -66,15 +47,15 @@
   cursor: pointer;
 }
 
-.quarter__item:hover {
+.quarter__list__item:hover {
   background-color: #f5f7fa;
 }
-.quarter__item.selected {
+.quarter__list__item--selected {
   color: #409eff;
   font-weight: 700;
 }
 
-.quarter__item.disabled {
+.quarter__list__item--disabled {
   color: #c0c4cc;
   cursor: not-allowed;
 }

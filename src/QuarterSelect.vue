@@ -10,26 +10,28 @@
   >
     <div class="quarter">
       <div class="quarter__header">
-        <button
-          class="iconfont icon-prev"
-          :class="{ quarter__button_disabled: false }"
+        <span
+          class="quarter__header-icon quarter__header-icon--prev"
           @click="year--"
-        ></button>
+        >
+          <img src="./assets/prev.svg">
+        </span>
         <span class="quarter__header-label">{{ year }}年</span>
-        <button
-          class="iconfont icon-next"
-          :class="{ quarter__button_disabled: false }"
+        <span
+          class="quarter__header-icon quarter__header-icon--next"
           @click="year++"
-        ></button>
+        >
+          <img src="./assets/next.svg">
+        </span>
       </div>
       <ul class="quarter__list">
         <li
           v-for="option in formatDropdownOptions"
           :key="option.value"
-          class="quarter__item"
+          class="quarter__list__item"
           :class="{
-            'disabled': isDisabled(option.value),
-            'selected': isSelected(option.value)
+            'quarter__list__item--disabled': isDisabled(option.value),
+            'quarter__list__item--selected': isSelected(option.value)
           }"
           @click="!isDisabled(option.value) && setDate(option.value)"
         >
