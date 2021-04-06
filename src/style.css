@@ -15,6 +15,22 @@
   padding: 0 5px;
 }
 
+.quarter__header-icon--prev-place {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-image: url(./assets/prev.png);
+  background-repeat: no-repeat;
+}
+
+.quarter__header-icon--next-place {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-image: url(./assets/next.png);
+  background-repeat: no-repeat;
+}
+
 .quarter__header-label {
   font-size: 16px;
   font-weight: 500;

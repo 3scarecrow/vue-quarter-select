@@ -15,7 +15,7 @@
           @click="year--"
         >
           <slot name="header-left">
-            <img src="./assets/prev.png">
+            <span class="quarter__header-icon--prev-place"></span>
           </slot>
         </span>
         <span class="quarter__header-label">
@@ -28,7 +28,7 @@
           @click="year++"
         >
           <slot name="header-right">
-            <img src="./assets/next.png">
+            <span class="quarter__header-icon--next-place"></span>
           </slot>
         </span>
       </div>
