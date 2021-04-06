@@ -1,7 +1,6 @@
 const execa = require('execa')
-const cc = require('convetional-changelog')
+const cc = require('conventional-changelog')
 const config = require('conventional-changelog-angular')
-const { inherits } = require('util')
 
 module.exports = version => {
   const fileStream = require('fs').createWriteStream(`CHANGELOG.md`)
@@ -21,7 +20,7 @@ module.exports = version => {
     await execa(
       'git',
       ['commit', '-m', `chore: ${version} changelog [ci skpi]`],
-      {stdio: 'inherits'}
+      { stdio: 'inherit'}
     )
   })
 }
