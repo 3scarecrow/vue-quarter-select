@@ -14,14 +14,22 @@
           class="quarter__header-icon quarter__header-icon--prev"
           @click="year--"
         >
-          <img src="./assets/prev.svg">
+          <slot name="header-left">
+            <img src="./assets/prev.png">
+          </slot>
         </span>
-        <span class="quarter__header-label">{{ year }}年</span>
+        <span class="quarter__header-label">
+          <slot name="header-center" :year="year">
+            {{ year }}年
+          </slot>
+        </span>
         <span
           class="quarter__header-icon quarter__header-icon--next"
           @click="year++"
         >
-          <img src="./assets/next.svg">
+          <slot name="header-right">
+            <img src="./assets/next.png">
+          </slot>
         </span>
       </div>
       <ul class="quarter__list">

@@ -123,7 +123,7 @@ default-value可显示默认季度
 
 <demo-box>
 
-通过 `slot-scope`自定义下拉选项模板
+通过 `slot-scope`自定义下拉选项或者选择器头部模板
 
 <demo-slot-scope slot="demo" />
 
@@ -172,3 +172,6 @@ default-value可显示默认季度
 | Name | 参数 | 说明 |
 | ----- | ----------- | ------ |
 | default | { label, value } | 自定义下拉选项模板 |
+| header-left | — | 自定义头部左侧内容 |
+| header-center | year | 自定义头部中间内容 |
+| header-right | — | 自定义头部右侧内容 |
