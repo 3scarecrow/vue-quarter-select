@@ -1,5 +1,5 @@
 <template>
-  <VueSelectWrapper
+  <SelectWrapper
     ref="selectWrapper"
     v-model="formatValue"
     :placeholder="placeholder"
@@ -10,10 +10,7 @@
   >
     <div class="quarter">
       <div class="quarter__header">
-        <span
-          class="quarter__header-icon quarter__header-icon--prev"
-          @click="year--"
-        >
+        <span class="quarter__header-icon quarter__header-icon--prev" @click="year--">
           <slot name="header-left">
             <span class="quarter__header-icon--prev-place"></span>
           </slot>
@@ -23,10 +20,7 @@
             {{ year }}年
           </slot>
         </span>
-        <span
-          class="quarter__header-icon quarter__header-icon--next"
-          @click="year++"
-        >
+        <span class="quarter__header-icon quarter__header-icon--next" @click="year++">
           <slot name="header-right">
             <span class="quarter__header-icon--next-place"></span>
           </slot>
@@ -36,11 +30,13 @@
         <li
           v-for="option in formatDropdownOptions"
           :key="option.value"
-          class="quarter__list__item"
-          :class="{
-            'quarter__list__item--disabled': isDisabled(option.value),
-            'quarter__list__item--selected': isSelected(option.value)
-          }"
+          :class="[
+            'quarter__list__item',
+            {
+              'quarter__list__item--disabled': isDisabled(option.value),
+              'quarter__list__item--selected': isSelected(option.value)
+            }
+          ]"
           @click="!isDisabled(option.value) && setDate(option.value)"
         >
           <slot :option="option">
@@ -49,13 +45,15 @@
         </li>
       </ul>
     </div>
-  </VueSelectWrapper>
+  </SelectWrapper>
 </template>
 
-<style src="./style.css"></style>
+<style lang="less" src="./style.less">
+
+</style>
 
 <script>
-import VueSelectWrapper from '@laomao800/vue-select-wrapper'
+import SelectWrapper from '@laomao800/vue-select-wrapper'
 import {
   autoParseDate,
   formatDate,
@@ -64,10 +62,10 @@ import {
 } from './utils/helper.js'
 
 export default {
-  name: 'QuarterSelect',
+  name: 'VueQuarterSelect',
 
   components: {
-    VueSelectWrapper
+    SelectWrapper
   },
 
   inheritAttrs: false,
@@ -102,7 +100,7 @@ export default {
     format: {
       type: Function,
       // eslint-disable-next-line
-      default: function(year, quarter, date) {
+      default: function (year, quarter, date) {
         return `${year}年 第${quarter}季度`
       }
     },
