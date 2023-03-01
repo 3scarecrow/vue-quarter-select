@@ -3,6 +3,7 @@
     id="demo"
     style="padding-top: 100px;margin: 0 auto;"
   >
+    value: {{ date }}
     <VueQuarterSelect
       v-model="date"
     >

@@ -49,13 +49,12 @@
 </template>
 
 <style lang="less" src="./style.less">
-
 </style>
 
 <script>
 import SelectWrapper from '@laomao800/vue-select-wrapper'
 import {
-  autoParseDate,
+  parseDate,
   formatDate,
   getYear,
   getQuarter
@@ -72,7 +71,7 @@ export default {
 
   model: {
     prop: 'value',
-    event: 'done'
+    event: 'change'
   },
 
   props: {
@@ -133,7 +132,7 @@ export default {
 
   mounted() {
     // 保留组件传递进来的初始值，于清空时设置其初始值
-    this.originValue = typeof this.value === 'string' ? '' : []
+    // this.originValue = typeof this.value === 'string' ? '' : []
     if (this.defaultValue) {
       this.year = getYear(this.defaultValue)
       this.setDate(getQuarter(this.defaultValue))
@@ -198,13 +197,13 @@ export default {
     },
 
     setDate(quarter) {
-      const beginDate = autoParseDate(this.year, (quarter - 1) * 3)
-      const endDate = autoParseDate(
+      const beginDate = parseDate(this.year, (quarter - 1) * 3)
+      const endDate = parseDate(
         beginDate.getFullYear(),
         beginDate.getMonth() + 3,
         beginDate.getDate() - 1
       )
-      // 根据value-format转化时间格式
+      // 根据 value-format 转化时间格式
       const date = [
         formatDate(beginDate, this.valueFormat),
         formatDate(endDate, this.valueFormat)
@@ -213,13 +212,13 @@ export default {
       this.selectedYear = this.year
       this.selectedQuarter = quarter
       this.transformValue(quarter, date)
-      this.$emit('done', date)
+      this.$emit('change', date)
     },
 
     clear() {
       this.selectedQuarter = ''
       this.formatValue = ''
-      this.$emit('done', this.originValue)
+      this.$emit('change', null)
     }
   }
 }
