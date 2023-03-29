@@ -78,6 +78,4 @@ export default {
 
 ## Star History
 
-## Star History
-
 [![Star History Chart](https://api.star-history.com/svg?repos=3scarecrow/vue-quarter-select&type=Date)](https://star-history.com/#3scarecrow/vue-quarter-select&Date)
