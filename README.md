@@ -75,3 +75,7 @@ export default {
 | clear | 点击清空时触发 | - |
 
 更多Events可查阅 [vue-select-wrapper 的Events](http://localhost:8083/vue-quarter-select/#events)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=3scarecrow/vue-quarter-select&type=Date)](https://star-history.com/#3scarecrow/vue-quarter-select&Date)
