@@ -1,5 +1,5 @@
 <template>
-  <VueSelectWrapper
+  <SelectWrapper
     ref="selectWrapper"
     v-model="formatValue"
     :placeholder="placeholder"
@@ -36,8 +36,8 @@
         <li
           v-for="option in formatDropdownOptions"
           :key="option.value"
-          class="quarter__list__item"
           :class="{
+            quarter__list__ite: true,
             'quarter__list__item--disabled': isDisabled(option.value),
             'quarter__list__item--selected': isSelected(option.value)
           }"
@@ -49,13 +49,14 @@
         </li>
       </ul>
     </div>
-  </VueSelectWrapper>
+  </SelectWrapper>
 </template>
 
-<style src="./style.css"></style>
+<style src="./style.css">
+</style>
 
 <script>
-import VueSelectWrapper from '@laomao800/vue-select-wrapper'
+import SelectWrapper from '@laomao800/vue-select-wrapper'
 import {
   autoParseDate,
   formatDate,
@@ -67,7 +68,7 @@ export default {
   name: 'QuarterSelect',
 
   components: {
-    VueSelectWrapper
+    SelectWrapper
   },
 
   inheritAttrs: false,
