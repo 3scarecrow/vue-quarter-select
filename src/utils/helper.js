@@ -4,7 +4,7 @@
  * @param {*} type 类型
  * @returns boolean
  */
-function isType(val, type) {
+export function is(val, type) {
   return Object.prototype.toString.call(val).slice(8, -1) === type
 }
 
@@ -14,7 +14,7 @@ function isType(val, type) {
  * @return Date
  */
 export function parseDate(...arg) {
-  if (arg.length === 1 && isType(arg[0], 'String')) {
+  if (arg.length === 1 && is(arg[0], 'String')) {
     return new Date(arg[0].replace(/-/g, '/'))
   } else {
     return new Date(...arg)
@@ -27,7 +27,7 @@ export function parseDate(...arg) {
  * @returns Date
  */
 function ensureDate(date) {
-  return isType(date, 'Date') ? date : parseDate(date)
+  return is(date, 'Date') ? date : parseDate(date)
 }
 
 /**
@@ -74,7 +74,7 @@ export function formatDate(dateOrDatestr, format = 'yyyy-MM-dd') {
  * @returns number
  */
 export function getYear(date) {
-  return isType(date, 'String') ? parseDate(date).getFullYear() : date.getFullYear()
+  return is(date, 'String') ? parseDate(date).getFullYear() : date.getFullYear()
 }
 
 /**
@@ -83,8 +83,22 @@ export function getYear(date) {
  * @returns number
  */
 export function getQuarter(date) {
-  const _date = isType(date, 'String') ?
+  const _date = is(date, 'String') ?
     parseDate(date) :
     date
   return Math.ceil((_date.getMonth() + 1) / 3)
+}
+
+export function generateDates(year = new Date().getFullYear()) {
+  const months = Array.from(Array(12)).map((_, index) => index)
+  return months.reduce((allDates, month) => {
+    let lastDayOfMonth = new Date(year, month + 1, 0)
+    const daysInMonth = lastDayOfMonth.getDate()
+    const datesInMonth = Array.from(Array(daysInMonth)).map((_, dayIndex) => {
+      lastDayOfMonth.setDate(dayIndex + 1)
+      return new Date(lastDayOfMonth.getTime())
+    })
+    allDates.push(datesInMonth)
+    return allDates
+  }, [])
 }

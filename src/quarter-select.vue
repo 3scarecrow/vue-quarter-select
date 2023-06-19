@@ -1,11 +1,11 @@
 <template>
   <SelectWrapper
     ref="selectWrapper"
-    v-model="formatValue"
-    :placeholder="placeholder"
+    v-model="formattedValue"
+    :multiple="multiple"
     :clearable="clearable"
+    :placeholder="placeholder"
     v-bind="$attrs"
-    v-on="$listeners"
     @clear="clear"
   >
     <div class="quarter">
@@ -28,7 +28,7 @@
       </div>
       <ul class="quarter__list">
         <li
-          v-for="option in formatDropdownOptions"
+          v-for="option in formattedOptions"
           :key="option.value"
           :class="[
             'quarter__list__item',
@@ -37,7 +37,7 @@
               'quarter__list__item--selected': isSelected(option.value)
             }
           ]"
-          @click="!isDisabled(option.value) && setDate(option.value)"
+          @click="!isDisabled(option.value) && setData(option.value)"
         >
           <slot :option="option">
             {{ option.label }}
@@ -54,14 +54,16 @@
 <script>
 import SelectWrapper from '@laomao800/vue-select-wrapper'
 import {
+  is,
   parseDate,
   formatDate,
-  getYear,
-  getQuarter
+  // getYear,
+  getQuarter,
+  generateDates
 } from './utils/helper.js'
 
 export default {
-  name: 'VueQuarterSelect',
+  name: 'QuarterSelect',
 
   components: {
     SelectWrapper
@@ -75,9 +77,7 @@ export default {
   },
 
   props: {
-    value: {
-      type: [Array, String]
-    },
+    value: { },
     valueFormat: {
       type: String,
       default: 'yyyy-MM-dd'
@@ -108,117 +108,155 @@ export default {
       default: () => ['第一季度', '第二季度', '第三季度', '第四季度']
     },
     defaultValue: {
-      type: Date
-    }
+      type: [Date, Array]
+    },
+    multiple: {
+      type: Boolean,
+      default: false
+    },
+    /** 禁用日期 */
+    disabledDate: {
+      type: Function
+    },
   },
 
   data() {
     return {
-      formatValue: '',
       year: new Date().getFullYear(),
-      selectedYear: new Date().getFullYear(),
-      selectedQuarter: ''
+      singleQuarter: this.createQuarterData(),
+      multipleQuarter: []
     }
   },
 
   computed: {
-    formatDropdownOptions() {
+    // 格式化下拉选项
+    formattedOptions() {
       return this.dropdownOptions.map((item, index) => ({
         label: item,
         value: index + 1
       }))
+    },
+    // 格式化输入框展示值
+    formattedValue() {
+      return this.multiple
+        ? this.multipleQuarter.map(item => item.format)
+        : this.singleQuarter.format
+    },
+
+    datesOfYear() {
+      return generateDates(this.year)
     }
   },
 
   mounted() {
-    // 保留组件传递进来的初始值，于清空时设置其初始值
-    // this.originValue = typeof this.value === 'string' ? '' : []
-    if (this.defaultValue) {
-      this.year = getYear(this.defaultValue)
-      this.setDate(getQuarter(this.defaultValue))
-    }
     this.$refs.selectWrapper && (this.selectWrapper = this.$refs.selectWrapper)
+  },
+
+  watch: {
+    defaultValue: 'setDefaultValue',
   },
 
   methods: {
     isSelected(quarter) {
-      if (this.year === this.selectedYear && quarter === this.selectedQuarter) {
-        return true
-      }
-      return false
+      const hasMatchedItem = item => this.hasMatchedItem(item, quarter)
+      return this.multiple
+        ? this.multipleQuarter.some(hasMatchedItem)
+        : hasMatchedItem(this.singleQuarter)
     },
+
+    hasMatchedItem(item, quarter) {
+      const { year } = this
+      return item.year === year && item.quarter === quarter
+    },
+
     // 设置禁用项
     isDisabled(quarter) {
-      const minQuarter = this.minDate && getQuarter(this.minDate)
-      const maxQuarter = this.maxDate && getQuarter(this.maxDate)
-      const minYear = this.minDate && getYear(this.minDate)
-      const maxYear = this.maxDate && getYear(this.maxDate)
-      const curYear = +this.year
-      // 只设置最小日期
-      if (this.minDate && !this.maxDate) {
-        if (minYear > curYear) {
-          return true
-        }
-        if (minYear === curYear && quarter < minQuarter) {
-          return true
-        }
-        return false
-      }
-      // 只设置最大日期
-      if (this.maxDate && !this.minDate) {
-        if (maxYear < curYear) {
-          return true
-        }
-        if (maxYear === curYear && quarter > maxQuarter) {
-          return true
-        }
-        return false
-      }
-      // 同时设置最小和最大日期
-      if (this.minDate && this.maxDate) {
-        if (minYear > curYear || maxYear < curYear) {
-          return true
-        }
-        if (
-          (minYear === curYear && quarter < minQuarter) ||
-          (maxYear === curYear && quarter > maxQuarter)
-        ) {
-          return true
-        }
-        return false
-      }
-      // 最小日期和最大日期都不设置
-      return false
+      const { disabledDate, datesOfYear } = this
+      if (!is(disabledDate, 'Function')) return false
+      return datesOfYear
+        .slice((quarter - 1) * 3, quarter * 3)
+        .reduce((r, v) => r.concat(v), [])
+        .every((date) => disabledDate(date))
     },
 
-    // 转换输入框显示的内容
-    transformValue(quarter, date) {
-      this.formatValue = this.format(this.year, quarter, date)
+    setDefaultValue(value) {
+      if (!value) {
+        this.clear()
+        return
+      }
+
+      if (this.multiple) {
+        if (!is(value, 'Array')) return
+        value.forEach(date => this.setMultipleData(getQuarter(date)))
+      } else {
+        this.setSingleData(value)
+      }
     },
 
-    setDate(quarter) {
-      const beginDate = parseDate(this.year, (quarter - 1) * 3)
-      const endDate = parseDate(
-        beginDate.getFullYear(),
-        beginDate.getMonth() + 3,
-        beginDate.getDate() - 1
-      )
-      // 根据 value-format 转化时间格式
-      const date = [
-        formatDate(beginDate, this.valueFormat),
-        formatDate(endDate, this.valueFormat)
-      ]
-      // 选择后保存选中的年份和季度
-      this.selectedYear = this.year
-      this.selectedQuarter = quarter
-      this.transformValue(quarter, date)
-      this.$emit('change', date)
+    setData(quarter) {
+      this.multiple ? this.setMultipleData(quarter) : this.setSingleData(quarter)
+    },
+
+    setSingleData(quarter) {
+      const quarterData = this.createQuarterData(quarter)
+      this.singleQuarter = { ...this.singleQuarter, ...quarterData }
+      this.emitChange()
+    },
+
+    setMultipleData(quarter) {
+      const quarterData = this.createQuarterData(quarter)
+      const hasMatchedItem = item => this.hasMatchedItem(item, quarter)
+      const isExistItem = this.multipleQuarter.some(hasMatchedItem)
+      if (isExistItem) {
+        this.multipleQuarter = this.multipleQuarter.filter(item => {
+          return !this.hasMatchedItem(item, quarter)
+        })
+      } else {
+        this.multipleQuarter.push(quarterData)
+      }
+      this.emitChange()
+    },
+
+    emitChange() {
+      const emittedValue = this.multiple
+        ? this.multipleQuarter.map(item => item.value)
+        : this.singleQuarter.value
+      this.$emit('change', emittedValue)
+    },
+
+    createQuarterData(quarter) {
+      if (is(quarter, 'Undefined')) return {
+        format: '',
+        year: '',
+        quarter: '',
+        value: []
+      }
+      const value = this.transformQuarterToDate(quarter)
+      const { year } = this
+      const format = this.format(year, quarter)
+      return { year, value, quarter, format }
+    },
+
+    /**
+     * 根据季度转化日期
+     * @param {Number} quarter 季度
+     */
+    transformQuarterToDate(quarter) {
+      const { year, valueFormat } = this
+      const beginDate = parseDate(year, (quarter - 1) * 3)
+      const endDate = parseDate(year, beginDate.getMonth() + 3, 0)
+      const formattedBeginDate = formatDate(beginDate, valueFormat)
+      const formattedEndDate = formatDate(endDate, valueFormat)
+      return [formattedBeginDate, formattedEndDate]
     },
 
     clear() {
-      this.selectedQuarter = ''
-      this.formatValue = ''
-      this.$emit('change', null)
+      if (this.multiple) {
+        this.multipleQuarter = []
+      } else {
+        this.singleQuarter = this.createQuarterData()
+      }
+      this.$emit('change', undefined)
     }
   }
 }
