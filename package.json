@@ -21,7 +21,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@laomao800/vue-select-wrapper": "^1.2.0"
+    "@popperjs/core": "2.11.8"
   },
   "devDependencies": {
     "@laomao800/vue-demo-box": "^1.1.5",
