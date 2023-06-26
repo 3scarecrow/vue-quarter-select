@@ -1,20 +1,15 @@
-/**
- * 判断类型
- * @param {any} val 值
- * @param {*} type 类型
- * @returns boolean
- */
-export function is(val, type) {
-  return Object.prototype.toString.call(val).slice(8, -1) === type
-}
+import {
+  isString,
+  isDate
+} from '@/utils'
 
 /**
- * 解析日期
+ * 转换日期
  * @param  {string | number} date
  * @return Date
  */
-export function parseDate(...arg) {
-  if (arg.length === 1 && is(arg[0], 'String')) {
+export function conovertToDate(...arg) {
+  if (arg.length === 1 && isString(arg[0])) {
     return new Date(arg[0].replace(/-/g, '/'))
   } else {
     return new Date(...arg)
@@ -27,7 +22,7 @@ export function parseDate(...arg) {
  * @returns Date
  */
 function ensureDate(date) {
-  return is(date, 'Date') ? date : parseDate(date)
+  return isDate(date) ? date : conovertToDate(date)
 }
 
 /**
@@ -55,7 +50,8 @@ export function formatDate(dateOrDatestr, format = 'yyyy-MM-dd') {
     'd+': date.getDate(),
     'h+': date.getHours(),
     'm+': date.getMinutes(),
-    's+': date.getSeconds()
+    's+': date.getSeconds(),
+    'q+': getQuarter(date)
   }
   return Object.keys(reg).reduce((r, k) => {
     if (new RegExp(`(${k})`).test(format)) {
@@ -74,7 +70,7 @@ export function formatDate(dateOrDatestr, format = 'yyyy-MM-dd') {
  * @returns number
  */
 export function getYear(date) {
-  return is(date, 'String') ? parseDate(date).getFullYear() : date.getFullYear()
+  return isString(date) ? conovertToDate(date).getFullYear() : date.getFullYear()
 }
 
 /**
@@ -83,9 +79,7 @@ export function getYear(date) {
  * @returns number
  */
 export function getQuarter(date) {
-  const _date = is(date, 'String') ?
-    parseDate(date) :
-    date
+  const _date = isString(date) ? conovertToDate(date) : date
   return Math.ceil((_date.getMonth() + 1) / 3)
 }
 

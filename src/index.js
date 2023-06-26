@@ -1,4 +1,6 @@
-import VueQuarterSelect from './quarter-select.vue'
+import '@/index.less'
+import Select from '@/components/Select.vue'
+import Panel from '@/components/Panel'
 
 function bindInstall(name, component) {
   const install = vue => vue.component(name, component)
@@ -10,4 +12,9 @@ function bindInstall(name, component) {
   return component
 }
 
-export default bindInstall(VueQuarterSelect.name, VueQuarterSelect)
+const QuarterSelect = bindInstall(Select.name, Select)
+const QuarterPanel = bindInstall(Panel.name, Panel)
+export default QuarterSelect
+export {
+  QuarterPanel
+}

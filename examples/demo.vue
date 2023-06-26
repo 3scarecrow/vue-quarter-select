@@ -4,35 +4,42 @@
     style="padding-top: 100px;margin: 0 auto;"
   >
     value: {{ date }}
-    <VueQuarterSelect
-      v-model="date"
-    >
-    </VueQuarterSelect>
+    <QuarterSelect v-model="date" >
+    </QuarterSelect>
     多选 value: {{ mdata }}
-    <VueQuarterSelect
+    <QuarterSelect
       v-model="mdata"
       multiple
     >
-    </VueQuarterSelect>
-    <VueQuarterSelect
-      v-model="mdata"
+    </QuarterSelect>
+    多选且禁用 value: {{ mdata1 }}
+    <QuarterSelect
+      v-model="mdata1"
       multiple
+      :limit="2"
+      :limitText="count => `还有${count}`"
       :disabledDate="disabledDate"
     >
-    </VueQuarterSelect>
+    </QuarterSelect>
+    面板
+    <QuarterPanel></QuarterPanel>
   </div>
 </template>
 <script>
-import VueQuarterSelect from '../src'
+import QuarterSelect, { QuarterPanel } from '../src'
 export default {
-  name: 'App',
+  name: 'Demo',
+
   components: {
-    VueQuarterSelect
+    QuarterSelect,
+    QuarterPanel
   },
+
   data() {
     return {
       date: '',
-      mdata: []
+      mdata: [],
+      mdata1: []
     }
   },
 

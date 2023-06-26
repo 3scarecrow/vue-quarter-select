@@ -55,12 +55,12 @@
 import SelectWrapper from '@laomao800/vue-select-wrapper'
 import {
   is,
-  parseDate,
+  conovertToDate,
   formatDate,
   // getYear,
   getQuarter,
   generateDates
-} from './utils/helper.js'
+} from '@/utils'
 
 export default {
   name: 'QuarterSelect',
@@ -243,8 +243,8 @@ export default {
      */
     transformQuarterToDate(quarter) {
       const { year, valueFormat } = this
-      const beginDate = parseDate(year, (quarter - 1) * 3)
-      const endDate = parseDate(year, beginDate.getMonth() + 3, 0)
+      const beginDate = conovertToDate(year, (quarter - 1) * 3)
+      const endDate = conovertToDate(year, beginDate.getMonth() + 3, 0)
       const formattedBeginDate = formatDate(beginDate, valueFormat)
       const formattedEndDate = formatDate(endDate, valueFormat)
       return [formattedBeginDate, formattedEndDate]
