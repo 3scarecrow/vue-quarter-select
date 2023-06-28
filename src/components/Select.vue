@@ -10,7 +10,7 @@
       @clear="clear"
       @remove="remove"
     >
-      <template v-for="(_, name) in $slots" v-slot:[name]="scoped">
+      <template v-for="(_, name) in $scopedSlots" v-slot:[name]="scoped">
         <slot :name="name" v-bind="scoped"></slot>
       </template>
     </Trigger>
@@ -27,7 +27,7 @@
         v-bind="panelProps"
         @change="handleChange"
       >
-        <template v-for="(_, name) in $slots" v-slot:[name]="scoped">
+        <template v-for="(_, name) in $scopedSlots" v-slot:[name]="scoped">
           <slot :name="name" v-bind="scoped"></slot>
         </template>
       </Panel>
@@ -68,7 +68,7 @@ const _createPopper = (referenceElement, popperElement, options) => {
 }
 
 export default {
-  name: 'QuarterSelect',
+  name: 'VueQuarterSelect',
 
   model: {
     prop: 'value',
