@@ -6,36 +6,42 @@
     [`qs__trigger--${size}`]: !!size
   }">
     <div class="qs__trigger__wrap" @click="toggleFocus">
-      <span class="qs__icon qs__icon--prefix">
-        <slot name="prefix">
+      <slot name="prefix">
+        <span class="qs__icon qs__icon--prefix">
           <icon><icon-calendar/></icon>
-        </slot>
-      </span>
+        </span>
+      </slot>
 
-      <span v-if="isEmpty" class="qs__placeholder">{{ placeholder }}</span>
-      <template v-else>
-        <div class="qs__selection">
-          <div v-if="multiple" class="qs__multiple">
-            <span
-              v-for="(tag, index) in values"
-              class="qs__tag"
-              :key="tag"
-            >
-              <span class="qs__tag__content">{{ tag }}</span>
-              <span class="qs__icon qs__icon--close" @click.stop="removeTag(index)">
-                <icon><icon-close /></icon>
+      <div class="qs__trigger__content">
+        <div v-if="isEmpty" class="qs__placeholder">{{ placeholder }}</div>
+        <template v-else>
+          <div class="qs__selection">
+            <div v-if="multiple" class="qs__multiple">
+              <span
+                v-for="(tag, index) in values"
+                class="qs__tag"
+                :key="tag"
+              >
+                <span class="qs__tag__content">{{ tag }}</span>
+                <span class="qs__icon qs__icon--close" @click.stop="removeTag(index)">
+                  <icon><icon-close /></icon>
+                </span>
               </span>
-            </span>
 
-            <span class="qs__tag" v-if="showLimit">
-              <span class="qs__tag__content">{{ limitText(value.length - limit) }}</span>
-            </span>
+              <span class="qs__tag" v-if="showLimit">
+                <span class="qs__tag__content">{{ limitText(value.length - limit) }}</span>
+              </span>
+            </div>
+            <div v-else class="qs__single">
+              {{ value }}
+            </div>
           </div>
-          <div v-else class="qs__single">
-            {{ value }}
-          </div>
-        </div>
-      </template>
+        </template>
+      </div>
+
+      <slot v-if="$scopedSlots.suffix" name="suffix">
+        <span class="qs__icon qs__icon--suffix"></span>
+      </slot>
 
       <span
         v-if="showClear"
@@ -43,10 +49,6 @@
         @click.stop="clear"
       >
         <icon><icon-circle-close /></icon>
-      </span>
-
-      <span v-if="$slots.suffix" class="qs__icon qs__icon--suffix">
-        <slot name="suffix"></slot>
       </span>
     </div>
   </div>
@@ -59,7 +61,7 @@ import IconCalendar from '@/components/icons/IconCalendar.vue'
 import IconCircleClose from '@/components/icons/IconCircleClose.vue'
 
 export default {
-  name: 'QuarterTrigger',
+  name: 'VueQuarterTrigger',
 
   components: {
     Icon,
@@ -132,6 +134,12 @@ export default {
     }
   },
 
+  mounted() {
+    this.$nextTick(() => {
+      console.log(this.$slots, this.$scopedSlots)
+    })
+  },
+
   methods: {
     toggleFocus() {
       if (!this.disabled) this.$emit('focus')
@@ -172,8 +180,9 @@ export default {
     align-items: center;
   }
 
-  .qs__selection {
+  .qs__trigger__content {
     flex: 1;
+    padding: 0 8px;
   }
 
   .qs__placeholder {
@@ -220,14 +229,6 @@ export default {
 
   .qs__icon {
     color: var(--qs-text-color-placeholder);
-  }
-
-  .qs__icon--prefix {
-    margin-right: 8px;
-  }
-
-  .qs__icon--suffix {
-    margin-left: 8px;
   }
 
   .qs__icon--clear {

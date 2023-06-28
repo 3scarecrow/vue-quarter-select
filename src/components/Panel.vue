@@ -1,9 +1,11 @@
 <template>
   <div class="qs__panel">
     <div class="qs__header">
-      <span class="qs__icon qs__icon--prev" @click="decreaseYear">
+      <span class="qs__place" @click="decreaseYear">
         <slot name="prev-icon">
-          <icon><icon-db-left /></icon>
+          <span class="qs__icon qs__icon--prev">
+            <icon><icon-db-left /></icon>
+          </span>
         </slot>
       </span>
       <span class="qs__header-label">
@@ -11,9 +13,11 @@
           {{ year }}
         </slot>
       </span>
-      <span class="qs__icon qs__icon--next" @click="increaseYear">
+      <span class="qs__place" @click="increaseYear">
         <slot name="next-icon">
-          <icon><icon-db-right /></icon>
+          <span class="qs__icon qs__icon--next">
+            <icon><icon-db-right /></icon>
+          </span>
         </slot>
       </span>
     </div>
@@ -29,7 +33,7 @@
         }"
         @click="setData(option.value)"
       >
-        <slot name="option-template" :option="option">
+        <slot :option="option">
           {{ option.label }}
         </slot>
       </li>
@@ -54,7 +58,7 @@ import IconDbLeft from '@/components/icons/IconDbLeft.vue'
 import IconDbRight from '@/components/icons/IconDbRight.vue'
 
 export default {
-  name: 'QuarterPanel',
+  name: 'VueQuarterPanel',
 
   components: {
     Icon,
@@ -127,7 +131,10 @@ export default {
   },
 
   watch: {
-    defaultValue: 'setDefaultValue',
+    defaultValue: {
+      handler: 'setDefaultValue',
+      immediate: true
+    }
   },
 
   methods: {
@@ -174,7 +181,7 @@ export default {
         if (!isArray(value)) return
         value.forEach(date => this.setMultipleData(getQuarter(date)))
       } else {
-        this.setSingleData(value)
+        this.setSingleData(getQuarter(value))
       }
     },
 
@@ -273,6 +280,10 @@ export default {
     justify-content: space-between;
     color: var(--qs-text-color);
     border-bottom: solid 1px var(--qs-border-color-light);
+  }
+
+  .qs__place {
+    cursor: pointer;
   }
 
   .qs__dropdown__list {
