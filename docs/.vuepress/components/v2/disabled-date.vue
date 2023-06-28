@@ -1,11 +1,10 @@
 <template>
   <div class="value-format__item">
     <div>value: {{ value }}</div>
-    <vue-quarter-select-v1
+    <vue-quarter-select
       v-model="value"
-      min-date="2019-04-10"
-      :max-date="new Date('2020-01-01')"
-    ></vue-quarter-select-v1>
+      :disabledDate="disabledDate"
+    ></vue-quarter-select>
   </div>
 </template>
 
@@ -14,6 +13,11 @@ export default {
   data() {
     return {
       value: []
+    }
+  },
+  methods: {
+    disabledDate(value) {
+      return value > new Date() || value < new Date('2022-01-01')
     }
   }
 }

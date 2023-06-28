@@ -1,10 +1,10 @@
 <template>
   <div class="value-format__item">
     <div>value: {{ value }}</div>
-    <vue-quarter-select-v1
+    <vue-quarter-select
       v-model="value"
       :format="format"
-    ></vue-quarter-select-v1>
+    ></vue-quarter-select>
   </div>
 </template>
 

@@ -1,12 +1,21 @@
-import VueQuarterSelect from './QuarterSelect.vue'
+import '@/index.less'
+import Select from '@/components/Select.vue'
+import Panel from '@/components/Panel'
 
-VueQuarterSelect.install = function (Vue) {
-  Vue.component('VueQuarterSelect', VueQuarterSelect)
-  Vue.component('vue-quarter-select', VueQuarterSelect)
+function bindInstall(name, component) {
+  const install = vue => vue.component(name, component)
+
+  component.install = install
+
+  window && window.Vue && install(window.Vue)
+
+  return component
 }
 
-if (typeof window !== 'undefined' && window.Vue) {
-  VueQuarterSelect.install(window.Vue)
-}
-
+const VueQuarterSelect = bindInstall(Select.name, Select)
+const VueQuarterPanel = bindInstall(Panel.name, Panel)
 export default VueQuarterSelect
+export {
+  VueQuarterSelect,
+  VueQuarterPanel
+}

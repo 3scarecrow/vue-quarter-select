@@ -1,7 +1,6 @@
 <template>
   <div class="value-format__item">
-    <div>value: {{ value }}</div>
-    <vue-quarter-select-v1 v-model="value"></vue-quarter-select-v1>
+    <vue-quarter-select :disabled="true"></vue-quarter-select>
   </div>
 </template>
 
@@ -9,7 +8,7 @@
 export default {
   data() {
     return {
-      value: ''
+      value: []
     }
   }
 }
