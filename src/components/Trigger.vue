@@ -5,7 +5,13 @@
     'qs__trigger--disabled': disabled,
     [`qs__trigger--${size}`]: !!size
   }">
-    <div class="qs__trigger__wrap" @click="toggleFocus">
+    <div
+      :class="{
+        qs__trigger__wrap: true,
+        'qs__trigger__wrap--clearable': this.clearable
+      }"
+      @click="toggleFocus"
+    >
       <slot name="prefix">
         <span class="qs__icon qs__icon--prefix">
           <icon><icon-calendar/></icon>
@@ -153,7 +159,16 @@ export default {
   .qs__trigger__wrap {
     min-height: calc(@height - 2px);
     line-height: calc(@height - 2px);
-    padding: @padding;
+    padding: 2px @padding;
+
+    &--clearable {
+      padding-right: calc(@padding + 12px);
+    }
+  }
+
+  .qs__tag {
+    min-height: calc(@height - 6px);
+    line-height: calc(@height - 6px);
   }
 }
 
@@ -164,11 +179,11 @@ export default {
   box-shadow: 0 0 0 1px var(--qs-border-color) inset;
   box-sizing: border-box;
   transition: all 0.2s;
-  cursor: pointer;
 
   .qs-size-factory(var(--qs-height-medium), var(--qs-padding-medium));
 
   .qs__trigger__wrap {
+    position: relative;
     display: flex;
     flex-grow: 1;
     align-items: center;
@@ -177,6 +192,7 @@ export default {
   .qs__trigger__content {
     flex: 1;
     padding: 0 8px;
+    cursor: pointer;
   }
 
   .qs__placeholder {
@@ -226,6 +242,8 @@ export default {
   }
 
   .qs__icon--clear {
+    position: absolute;
+    right: 6px;
     display: none;
   }
 
