@@ -17,7 +17,7 @@
     <div
       ref="popper"
       v-show="isFocus"
-      class="qs__popper"
+      :class="['qs__popper', popperClass]"
       :style="popperStyle"
       @click.stop
     >
@@ -41,7 +41,7 @@ import vClickOutside from '@/directives/ClickOutside'
 import { createPopper } from '@popperjs/core'
 import Panel from '@/components/Panel.vue'
 import Trigger from '@/components/Trigger.vue'
-import { pick, omit, mapKey, kebabCase } from '@/utils'
+import { pick, omit, mapKey, kebabCase, isString } from '@/utils'
 
 const triggerKeys = [
   'size',
@@ -109,6 +109,9 @@ export default {
     multiple: {
       type: Boolean,
       default: false
+    },
+    popperClass: {
+      type: String
     }
   },
 
@@ -123,6 +126,13 @@ export default {
   computed: {
     normalizedAttrs() {
       const attrs = { ...this.$attrs, multiple: this.multiple }
+      const excludeKeys = Object.keys(this.$props)
+      // 处理透传属性给子组件时消费组件属性值为简写的情况
+      Object.keys(attrs).forEach(key => {
+        if (!excludeKeys.includes(key) && isString(attrs[key]) && !attrs[key]) {
+          attrs[key] = true
+        }
+      })
       return mapKey(attrs, (_, key) => kebabCase(key))
     },
     /** 触发器组件 Props */
@@ -276,23 +286,41 @@ export default {
   visibility: visible;
   content: '';
   transform: rotate(45deg);
-  border-top: 1px solid var(--qs-border-color-light);
-  border-left: 1px solid var(--qs-border-color-light);
 }
 
 .qs__popper[data-popper-placement^='top']>.qs__arrow {
   bottom: -5px;
+
+  &::before {
+    border-bottom: 1px solid var(--qs-border-color-light);
+    border-right: 1px solid var(--qs-border-color-light);
+  }
 }
 
 .qs__popper[data-popper-placement^='bottom']>.qs__arrow {
   top: -5px;
+
+  &::before {
+    border-top: 1px solid var(--qs-border-color-light);
+    border-left: 1px solid var(--qs-border-color-light);
+  }
 }
 
 .qs__popper[data-popper-placement^='left']>.qs__arrow {
   right: -5px;
+
+  &::before {
+    border-top: 1px solid var(--qs-border-color-light);
+    border-right: 1px solid var(--qs-border-color-light);
+  }
 }
 
 .qs__popper[data-popper-placement^='right']>.qs__arrow {
   left: -5px;
+
+  &::before {
+    border-bottom: 1px solid var(--qs-border-color-light);
+    border-left: 1px solid var(--qs-border-color-light);
+  }
 }
 </style>

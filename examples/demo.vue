@@ -4,7 +4,7 @@
     style="padding-top: 100px;margin: 0 auto;"
   >
     value: {{ date }}
-    <VueQuarterSelect v-model="date" :default-value="defaultValue">
+    <VueQuarterSelect v-model="date" :default-value="defaultValue" popper-class="xxx">
       <template v-slot:prefix>pre</template>
       <template v-slot:suffix>suf</template>
 
@@ -15,7 +15,7 @@
         <span style="color: green;fontSize:18px;">👩👳 — {{ option.label }}</span>
       </template>
     </VueQuarterSelect>
-    <!-- 多选 value: {{ mdata }}
+    多选 value: {{ mdata }}
     <VueQuarterSelect
       v-model="mdata"
       multiple
@@ -29,7 +29,7 @@
       :limitText="count => `还有${count}`"
       :disabledDate="disabledDate"
     >
-    </VueQuarterSelect> -->
+    </VueQuarterSelect>
     面板
     <VueQuarterPanel>
       <template v-slot:year="{ year }">{{ year }} 年</template>

@@ -1,6 +1,6 @@
 import '@/index.less'
 import Select from '@/components/Select.vue'
-import Panel from '@/components/Panel'
+import Panel from '@/components/Panel.vue'
 
 function bindInstall(name, component) {
   const install = vue => vue.component(name, component)

@@ -4,11 +4,13 @@ import {
   mount,
   shallowMount
 } from '@vue/test-utils'
-import QuarterSelect from '@/QuarterSelect.vue'
+import {
+  VueQuarterSelect
+} from '@/index'
 
 describe('QuarterSelect', () => {
   it('a valid component', () => {
-    const wrapper = shallowMount(QuarterSelect)
+    const wrapper = shallowMount(VueQuarterSelect)
     wrapper.vm.$emit('change', ['2019-10-01', '2019-12-31'])
     expect(wrapper.emitted().change[0][0]).toEqual(['2019-10-01', '2019-12-31'])
     // expect(wrapper.isVueInstance()).toBeTruthy()
