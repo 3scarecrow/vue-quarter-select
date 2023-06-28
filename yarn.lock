@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@3scarecrow/vue-quarter-select@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmmirror.com/@3scarecrow/vue-quarter-select/-/vue-quarter-select-1.2.0.tgz#11584d522c52e62a08843cc2d7f71c3b73b6022f"
+  integrity sha512-HEaXt7zq21tLKhTlQEcwmEUYOs9s9F6fY1UtAL4XsE7F/3GEUMlDXK1r1BSV4NWFGNNZO90zOPDgMowLZxbDHA==
+  dependencies:
+    "@laomao800/vue-select-wrapper" "^1.2.0"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -992,10 +999,24 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
+"@laomao800/parse-size-with-unit@^1.0.0":
+  version "1.0.3"
+  resolved "https://registry.npmmirror.com/@laomao800/parse-size-with-unit/-/parse-size-with-unit-1.0.3.tgz#ed7147dd8efb1c6d350927e37836fbe5960ddc5b"
+  integrity sha512-e3mL0bYMCJfob3ZskF3ISNqYjrASNEes8Ag9a2am3oenqyufNO/wftEEVro9JDvfl/dX7Rt5do0CblQWU4EW5w==
+
 "@laomao800/vue-demo-box@^1.1.5":
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@laomao800/vue-demo-box/-/vue-demo-box-1.1.5.tgz#cd4a59cf11fab46511b80075d503dddaa0801629"
   integrity sha512-dCxYjahiLzEefvGVSfHQLBLSdT6eRfMDrJTciHBjUyAY3W2kmIVaTN8E+3raVYS3szijzuNmbtrrtRwFktDz0A==
+
+"@laomao800/vue-select-wrapper@^1.2.0":
+  version "1.3.1"
+  resolved "https://registry.npmmirror.com/@laomao800/vue-select-wrapper/-/vue-select-wrapper-1.3.1.tgz#ae4dfb79e7315b92a1fcfb3560bb0cfc061ad1d8"
+  integrity sha512-l+YFta99MOTCd5JESk/Wf7qgqqhyeE183ziAUC/U9BfCSV1Mx4bMtZOGq0sdi/XACUTxtD9G2F71uZThyf9reg==
+  dependencies:
+    "@laomao800/parse-size-with-unit" "^1.0.0"
+    "@popperjs/core" "^2.4.4"
+    has-values "^2.0.1"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -1010,7 +1031,7 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@popperjs/core@2.11.8":
+"@popperjs/core@2.11.8", "@popperjs/core@^2.4.4":
   version "2.11.8"
   resolved "https://registry.npmmirror.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
@@ -5751,6 +5772,13 @@ has-values@^1.0.0:
   dependencies:
     is-number "^3.0.0"
     kind-of "^4.0.0"
+
+has-values@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npmmirror.com/has-values/-/has-values-2.0.1.tgz#3876200ff86d8a8546a9264a952c17d5fc17579d"
+  integrity sha512-+QdH3jOmq9P8GfdjFg0eJudqx1FqU62NQJ4P16rOEHeRdl7ckgwn6uqQjzYE0ZoHVV/e5E2esuJ5Gl5+HUW19w==
+  dependencies:
+    kind-of "^6.0.2"
 
 has@^1.0.0, has@^1.0.1, has@^1.0.3:
   version "1.0.3"
