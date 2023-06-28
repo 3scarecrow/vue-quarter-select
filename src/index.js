@@ -12,9 +12,10 @@ function bindInstall(name, component) {
   return component
 }
 
-const QuarterSelect = bindInstall(Select.name, Select)
-const QuarterPanel = bindInstall(Panel.name, Panel)
-export default QuarterSelect
+const VueQuarterSelect = bindInstall(Select.name, Select)
+const VueQuarterPanel = bindInstall(Panel.name, Panel)
+export default VueQuarterSelect
 export {
-  QuarterPanel
+  VueQuarterSelect,
+  VueQuarterPanel
 }

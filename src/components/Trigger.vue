@@ -134,12 +134,6 @@ export default {
     }
   },
 
-  mounted() {
-    this.$nextTick(() => {
-      console.log(this.$slots, this.$scopedSlots)
-    })
-  },
-
   methods: {
     toggleFocus() {
       if (!this.disabled) this.$emit('focus')
