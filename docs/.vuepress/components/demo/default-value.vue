@@ -1,10 +1,10 @@
 <template>
   <div class="value-format__item">
-    <div>date: {{date}}</div>
-    <vue-quarter-select
-      v-model="date"
-      :default-value="new Date()"
-    ></vue-quarter-select>
+    <div>value: {{ value }}</div>
+    <vue-quarter-select-v1
+      v-model="value"
+      :default-value="defaultValue"
+    ></vue-quarter-select-v1>
   </div>
 </template>
 
@@ -12,13 +12,9 @@
 export default {
   data() {
     return {
-      date: ''
+      defaultValue: new Date(),
+      value: ''
     }
   }
 }
 </script>
-<style scoped>
-.value-format__item {
-  width: 350px;
-}
-</style>

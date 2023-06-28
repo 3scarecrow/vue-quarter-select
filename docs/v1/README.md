@@ -7,9 +7,13 @@ sidebar: auto
   .sw__wrapper { width: 350px; margin-top: 16px !important; }
 </style>
 
-# Vue quarter select
+# Vue quarter select <Badge text="v1.0"/>
 
 一个基于 Vue.js 的季度选择器
+
+::: danger 注意
+下面 demo 中的源代码 `<vue-quater-select-v1>` 在实际项目中需要替换为 `<vue-quater-select>`，在此用 v1 的组件是为了避免 v2.x 的组件对示例的影响！
+:::
 
 <client-only>
 

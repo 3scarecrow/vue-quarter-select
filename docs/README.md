@@ -7,115 +7,181 @@ sidebar: auto
   .sw__wrapper { width: 350px; margin-top: 16px !important; }
 </style>
 
-# Vue quarter select
-
-A quarter selector based on Vue.js
-
 <client-only>
+
+# Vue quarter select <Badge text="v2.0"/>
+
+一个基于 Vue.js 的季度选择器
+
 
 ## Example
 
-### basic usage
+### 基础用法
 
 <demo-box>
 
-bind selected value by `v-model`
+通过 `v-model` 绑定选择后的值
 
-<demo-default slot="demo" />
+<v2-default slot="demo" />
 
 <div slot="code">
 
-<<< docs/.vuepress/components/demo/default.vue
+<<< docs/.vuepress/components/v2/default.vue
 
 </div>
 
 </demo-box>
 
-### value format
+### 绑定值格式
 
 <demo-box>
 
-custom binding value format by `value-format`
+设置 `value-format` 可以指定绑定值的格式
 
-<demo-value-format slot="demo" />
+<v2-value-format slot="demo" />
 
 <div slot="code">
 
-<<< docs/.vuepress/components/demo/value-format.vue
+<<< docs/.vuepress/components/v2/value-format.vue
 
 </div>
 
 </demo-box>
 
-### disabled option
+### 多选模式
 
 <demo-box>
 
-**With the help of `min-date` and `max-date`, you can disable some option**<br>
-min-date: those quarter that less than the `min-date` will be disabled<br/>
-max-date: those quarter that more than the `max-date` will be disabled
+设置 `multiple` 属性即可启用多选
 
-<demo-disabled slot="demo" />
+<v2-multiple slot="demo" />
 
 <div slot="code">
 
-<<< docs/.vuepress/components/demo/disabled.vue
+<<< docs/.vuepress/components/v2/multiple.vue
 
 </div>
 
 </demo-box>
 
-### input text format
+### 禁用状态
 
 <demo-box>
 
-<h4>custom input text format by function format </h4>
+禁用整个选择器组件
 
-Function format has three parameter: year, quarter, date<br/>
+设置 `disabled` 属性，则整个选择器不可用。
 
-| paramter | type | description |
+<v2-disabled slot="demo" />
+
+<div slot="code">
+
+<<< docs/.vuepress/components/v2/disabled.vue
+
+</div>
+
+</demo-box>
+
+### 禁用季度
+
+<demo-box>
+
+通过 `disabled-date` 函数来实现季度禁用<br/>
+一个用来判断该日期是否被禁用的函数，接受一个 Date 对象作为参数。 应该返回一个 Boolean 值。
+
+<v2-disabled-date slot="demo" />
+
+<div slot="code">
+
+<<< docs/.vuepress/components/v2/disabled-date.vue
+
+</div>
+
+</demo-box>
+
+### 输入框文本格式
+
+<demo-box>
+
+`format` 字符串或函数指定输入框的格式
+
+字符类型：`yyyy Qq`
+
+函数类型：```(year, quarter) => `${year} Q${quarter}` ```
+| 参数 | 类型 | 说明 |
 | ---- | ---- | ---  |
-| year | Number | selected year |
-| quarter | Number | selected quarter |
-| date | Array | date |
+| year | Number | 年份 |
+| quarter | Number | 季度 |
 
-<demo-format slot="demo" />
+<v2-format slot="demo" />
 
 <div slot="code">
 
-<<< docs/.vuepress/components/demo/format.vue
+<<< docs/.vuepress/components/v2/format.vue
 
 </div>
 
 </demo-box>
 
-### dropdown option text
+### 选项垂直排列
 
 <demo-box>
 
-custom dropdown option text by `dropdown-options`
+只需要设置 `direction` 属性为 `vertical` 即可。
 
-<demo-dropdown-options slot="demo" />
+<v2-direction slot="demo" />
 
 <div slot="code">
 
-<<< docs/.vuepress/components/demo/dropdown-options.vue
+<<< docs/.vuepress/components/v2/direction.vue
 
 </div>
 
 </demo-box>
 
-### default quarter
+### 下拉框选项模板
 
 <demo-box>
 
-set up default quarter by `default-value`
+设置 `option-format` 可以自定义选项模板
 
-<demo-default-value slot="demo" />
+<v2-option-format slot="demo" />
 
 <div slot="code">
 
-<<< docs/.vuepress/components/demo/default-value.vue
+<<< docs/.vuepress/components/v2/option-format.vue
+
+</div>
+
+</demo-box>
+
+### 默认显示季度
+
+<demo-box>
+
+设置 `default-value` 可显示默认季度
+
+<v2-default-value slot="demo" />
+
+<div slot="code">
+
+<<< docs/.vuepress/components/v2/default-value.vue
+
+</div>
+
+</demo-box>
+
+### 只使用面板
+
+<demo-box>
+
+只是用选择面板，不显示输入框。
+
+<v2-panel slot="demo" />
+
+<div slot="code">
+
+<<< docs/.vuepress/components/v2/panel.vue
 
 </div>
 
@@ -125,13 +191,13 @@ set up default quarter by `default-value`
 
 <demo-box>
 
-Slot for custom template of option or header by `slot-scope`
+通过 `slot` 自定义输入框首部和尾部图标，以及下拉选项或者面板左右图标
 
-<demo-slot-scope slot="demo" />
+<v2-slot slot="demo" />
 
 <div slot="code">
 
-<<< docs/.vuepress/components/demo/slot-scope.vue
+<<< docs/.vuepress/components/v2/slot.vue
 
 </div>
 
@@ -139,39 +205,72 @@ Slot for custom template of option or header by `slot-scope`
 
 </client-only>
 
-## Props
+## Select Props
 
-| prop | type | default | description |
+| 参数 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| value/v-model | String/Array | `[]` | binding value |
-| value-format | String | `yyyy-MM-dd` | format of binding value |
-| minDate | String/Date | `undefined` | those quarter that less than the `min-date` will be disabled |
-| maxDate | String/Date | `undefined` | those quarter that more than the `max-date` will be disabled |
-| format | Function(year,quarter,date) | - | custom input text format by function format |
-| select-items | Array | - | custom dropdown option text by `select-items` |
-| default-value | Date | - | set up default quarter by `default-value` |
+| placeholder | string | `请选择季度` | 占位文本 |
+| clearable | boolean | `true` | 是否可清空 |
+| size | string | - | 控件尺寸，可选值 `large，medium，small`|
+| disabled | boolean | false | 是否禁用控件|
+| limit | number | 0 | 限制显示的选项数量，必须大于 0 。其余选项会显示为 limit-text 所返回的内容|
+| limit-text | function |	```count => `+${count}` ``` | 当选项超过限制时显示文本的处理方法，参数为剩余选项数量 |
+| append-to-body | boolean | `true` | 下拉弹出元素是否插入于 `<body>` 内 |
+| popper-width | number | `undefined` | 下拉弹出元素宽度，若不设置则与触发元素相同度 |
+| popper-z-index | number |	`1000`| 下拉弹出元素的 z-index 值 |
+| placement | string | `auto` | 下拉弹出位置，可选值 [placement](https://popper.js.org/docs/v2/constructors/#options) |
 
-See [vue-select-wrapper 的Props](https://laomao800.github.io/vue-select-wrapper/zh/#props) for more Props
+更多 Props 可参考 [Panel Props](#panel-props)
 
-## Methods
+## Select Methods
 
-| Methods | Descripion | Parameters |
-| ------- | ---------- | ------ |
-| clear   | clear binding value  | — |
+| 方法名 | 说明 | 参数 |
+| ------- | ---------- | --- |
+| clear   | 清空绑定值  | — |
+| showPopper | 显示下拉框 | — |
+| hidePopper | 显示下拉框 | — |
+| togglePopper | 切换下拉框状态 | — |
 
-## Events
+## Select Events
 
-| Event | Description | Parameters |
+| 事件名 | 说明 | 参数 |
 | ----- | ----------- | ------ |
-| change | Trigger on value change | (newVal) |
-| visible-change | Trigger on dropdown toggle | (visible) true for show, false for hide|
-| clear | trigger when emptying  | — |
+| change | 选项变化时 | value |
+| visible-change | 下拉框出现/隐藏时 | 出现则为 true，隐藏则为 false |
+| clear | 点击清空时触发 | — |
 
-## Slots
+## Select Slots
 
-| Name | Props | Description |
+| Name | 参数 | 说明 |
 | ----- | ----------- | ------ |
-| default | { label, value } | Slot for custom option template |
-| header-left | — | Slot for custom header left |
-| header-center | year | Slot for custom header center |
-| header-right | — | Slot for custom header right |
+| prefix | - | 控件前置内容 |
+| suffix | — | 控件后置内容 |
+
+更多 Slots 可参考 [Panel Slots](#panel-slots)
+
+## Panel Props
+
+| 参数 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| value/v-model | string/array | `[]` | 绑定值 |
+| value-format | string | `yyyy-MM-dd` | 绑定值的格式 |
+| format | function(year,quarter,date) | - | 使用 format 指定输入框的格式 |
+| option-format | function(quarter) | - | 自定义下拉选项文本 |
+| default-value | date | - | 默认显示的季度 |
+
+## Panel Methods
+
+| 方法名 | 说明 | 参数 |
+| ------- | ---------- | --- |
+| increaseYear | 递增年份  | — |
+| decreaseYear | 递减年份  | — |
+| clear | 清空值  | — |
+
+## Panel Slots
+
+| Name | 参数 | 说明 |
+| ----- | ----------- | ------ |
+| default | { label, value } | 下拉选项模板 |
+| prev-icon | — | 左侧图标 |
+| year | year | 年份内容 |
+| next-icon | — | 右侧图标 |

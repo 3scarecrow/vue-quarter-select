@@ -4,39 +4,54 @@
     style="padding-top: 100px;margin: 0 auto;"
   >
     value: {{ date }}
-    <QuarterSelect v-model="date" >
-    </QuarterSelect>
-    多选 value: {{ mdata }}
-    <QuarterSelect
+    <VueQuarterSelect v-model="date" :default-value="defaultValue">
+      <template v-slot:prefix>pre</template>
+      <template v-slot:suffix>suf</template>
+
+      <template v-slot:year="{ year }">{{ year }} 年</template>
+      <template v-slot:prev-icon>&lt;</template>
+      <template v-slot:next-icon>&gt;</template>
+      <template v-slot="{ option }">
+        <span style="color: green;fontSize:18px;">👩👳 — {{ option.label }}</span>
+      </template>
+    </VueQuarterSelect>
+    <!-- 多选 value: {{ mdata }}
+    <VueQuarterSelect
       v-model="mdata"
       multiple
     >
-    </QuarterSelect>
+    </VueQuarterSelect>
     多选且禁用 value: {{ mdata1 }}
-    <QuarterSelect
+    <VueQuarterSelect
       v-model="mdata1"
       multiple
       :limit="2"
       :limitText="count => `还有${count}`"
       :disabledDate="disabledDate"
     >
-    </QuarterSelect>
+    </VueQuarterSelect> -->
     面板
-    <QuarterPanel></QuarterPanel>
+    <VueQuarterPanel>
+      <template v-slot:year="{ year }">{{ year }} 年</template>
+      <template v-slot="{ option }">
+        <span style="color: green;fontSize:18px;">👧👩👳 —— {{ option.label }}</span>
+      </template>
+    </VueQuarterPanel>
   </div>
 </template>
 <script>
-import QuarterSelect, { QuarterPanel } from '../src'
+import { VueQuarterSelect, VueQuarterPanel } from '../src'
 export default {
   name: 'Demo',
 
   components: {
-    QuarterSelect,
-    QuarterPanel
+    VueQuarterSelect,
+    VueQuarterPanel
   },
 
   data() {
     return {
+      defaultValue: new Date(),
       date: '',
       mdata: [],
       mdata1: []

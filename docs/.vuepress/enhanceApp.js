@@ -1,10 +1,21 @@
-export default({ Vue }) => {
+export default ({
+  Vue
+}) => {
   import('../../src/index')
     .then(module => {
-      const VueQuarterSelect = module.default
+      const {
+        VueQuarterSelect,
+        VueQuarterPanel
+      } = module
       Vue.use(VueQuarterSelect)
+      Vue.use(VueQuarterPanel)
     })
     .catch(e => {})
+
+  import('@3scarecrow/vue-quarter-select')
+    .then(module => {
+      Vue.component('vue-quarter-select-v1', module.default)
+    })
 
   import('@laomao800/vue-demo-box')
     .then(module => {
