@@ -10,7 +10,7 @@ const release = async () => {
   const bumps = ['patch', 'minor', 'major', 'prerelease']
   const versions = {}
   bumps.forEach(b => {
-    if(b === 'prerelease') {
+    if (b === 'prerelease') {
       versions[b] = semver.inc(curVersion, b, 'beta')
     } else {
       versions[b] = semver.inc(curVersion, b)
@@ -22,12 +22,17 @@ const release = async () => {
     value: b
   }))
 
-  const { bump, customVersion } = await inquirer.prompt([
-    {
+  const {
+    bump,
+    customVersion
+  } = await inquirer.prompt([{
       name: 'bump',
       message: 'Select release type: ',
       type: 'list',
-      choices: [...bumpChoices, { name: 'custom', value: 'custom'}]
+      choices: [...bumpChoices, {
+        name: 'custom',
+        value: 'custom'
+      }]
     },
     {
       name: 'customVersion',
@@ -40,25 +45,27 @@ const release = async () => {
   const version = customVersion || versions[bump]
   process.env.VERSION = version
 
-  const { genDocs } = await inquirer.prompt([
-    {
-      name: 'genDocs',
-      message: `Generate ${version} verpress docs?`,
-      type: 'confirm'
-    }
-  ])
+  const {
+    genDocs
+  } = await inquirer.prompt([{
+    name: 'genDocs',
+    message: `Generate ${version} verpress docs?`,
+    type: 'confirm'
+  }])
 
-  const { yes } = await inquirer.prompt([
-    {
-      name: 'yes',
-      message: `Confirm releasing ${version}?`,
-      type: 'confirm'
-    }
-  ])
+  const {
+    yes
+  } = await inquirer.prompt([{
+    name: 'yes',
+    message: `Confirm releasing ${version}?`,
+    type: 'confirm'
+  }])
 
-  const CONFIG = { stdio: 'inherit' }
+  const CONFIG = {
+    stdio: 'inherit'
+  }
   if (yes) {
-    await execa('npm', ['run', 'build:lib'], CONFIG)
+    await execa('npm', ['run', 'build'], CONFIG)
     await execa('git', ['add', 'dist'], CONFIG)
     await execa('git', ['commit', '-m', `build: build ${version}`], CONFIG)
     if (genDocs) {

@@ -18,7 +18,8 @@
     "docs:build": "vuepress build docs",
     "release": "node scripts/release",
     "release:gh-pages": "git subtree push --prefix=docs/.vuepress/dist origin gh-pages",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "build": "vue-cli-service build --target lib --name vue-quarter-select src/index.js"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8"
