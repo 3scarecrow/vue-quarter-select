@@ -17,6 +17,13 @@ module.exports = {
       entry: 'examples'
     }
   },
+
+  css: {
+    extract: false
+  },
+
+  productionSourceMap: false,
+
   chainWebpack: (config) => {
     config.resolve.alias
       .set("@", resolve("./src"))

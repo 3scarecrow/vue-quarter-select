@@ -3,6 +3,7 @@
  */
 function validate(binding) {
   if (typeof binding.value !== 'function') {
+    // eslint-disable-next-line no-console
     console.warn('[Vue-click-outside:] provided expression', binding.expression, 'is not a function.')
     return false
   }
