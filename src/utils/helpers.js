@@ -53,3 +53,12 @@ export function mapKey(object, iteratee) {
   })
   return result
 }
+
+export function parseUnit(val) {
+  if (/^-?\d+(.\d+)?(px|em|rem|vh|vw|vmin|vmax|%|cm|mm|in|pt|pc)$/i.test(val)) {
+    return val
+  }
+  const num = parseFloat(val, 10)
+  if (isNaN(num)) return undefined
+  return `${num}px`
+}

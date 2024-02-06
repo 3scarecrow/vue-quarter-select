@@ -41,7 +41,7 @@ import vClickOutside from '@/directives/ClickOutside'
 import { createPopper } from '@popperjs/core'
 import Panel from '@/components/Panel.vue'
 import Trigger from '@/components/Trigger.vue'
-import { pick, omit, mapKey, kebabCase, isString } from '@/utils'
+import { pick, omit, mapKey, kebabCase, isString, parseUnit } from '@/utils'
 
 const triggerKeys = [
   'size',
@@ -93,7 +93,7 @@ export default {
     },
     /** 下拉框的宽度 */
     popperWidth: {
-      type: Number,
+      type: [Number, String],
     },
     /** 下拉框的 z-index */
     popperZIndex: {
@@ -144,8 +144,9 @@ export default {
       return omit(this.normalizedAttrs, triggerKeys)
     },
     popperStyle () {
+      const rawWidth = this.popperWidth || this.triggerWidth
       return {
-        width: this.popperWidth || this.triggerWidth + 'px',
+        width: parseUnit(rawWidth),
         zIndex: this.popperZIndex
       }
     }
