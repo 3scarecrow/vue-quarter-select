@@ -216,7 +216,7 @@ sidebar: auto
 | limit | number | 0 | 限制显示的选项数量，必须大于 0 。其余选项会显示为 limit-text 所返回的内容|
 | limit-text | function |	```count => `+${count}` ``` | 当选项超过限制时显示文本的处理方法，参数为剩余选项数量 |
 | append-to-body | boolean | `true` | 下拉弹出元素是否插入于 `<body>` 内 |
-| popper-width | number | `undefined` | 下拉弹出元素宽度，若不设置则与触发元素相同度 |
+| popper-width | number/string | `undefined` | 下拉弹出元素宽度，若不设置则与触发元素相同度 |
 | popper-z-index | number |	`1000`| 下拉弹出元素的 z-index 值 |
 | popper-class | string |	- | 下拉弹出元素 class 名 |
 | placement | string | `auto` | 下拉弹出位置，可选值 [placement](https://popper.js.org/docs/v2/constructors/#options) |
